@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "sandbox-forms": [
+        "libs/forms/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
