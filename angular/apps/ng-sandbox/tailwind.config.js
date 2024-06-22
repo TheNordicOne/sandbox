@@ -8,7 +8,11 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname)
   ],
   theme: {
-    extend: {}
+    extend: {
+      gridTemplateColumns: {
+        '2min': 'repeat(2, auto)'
+      }
+    }
   },
   plugins: []
 };
