@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@sandbox/utils": [
+        "libs/shared/util/src/index.ts"
+      ],
       "sandbox-forms": [
         "libs/forms/src/index.ts"
       ]
