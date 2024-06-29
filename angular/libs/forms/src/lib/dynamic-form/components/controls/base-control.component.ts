@@ -1,5 +1,5 @@
 import { DynamicControl } from '../../dynamic-form.type';
-import { Component, computed, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
 import { shouldBeShown, viewProviders } from '../../helper';
 import { DynamicFormService } from '../../dynamic-form.service';
@@ -30,6 +30,17 @@ export class BaseControlComponent<T extends DynamicControl> implements OnInit, O
 
   get parentFormGroup() {
     return this.parentContainer.control as FormGroup;
+  }
+
+  constructor() {
+    effect(() => {
+      const isVisible = this.isVisible();
+      if (isVisible) {
+        this.parentFormGroup.get(this.control.id)?.enable({ emitEvent: false });
+        return;
+      }
+      this.parentFormGroup.get(this.control.id)?.disable({ emitEvent: false });
+    });
   }
 
   ngOnInit(): void {
