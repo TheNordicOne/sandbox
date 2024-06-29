@@ -27,4 +27,8 @@ export class DynamicFormComponent {
     }
     return dynamicForm.groups;
   });
+
+  logToConsole() {
+    console.log(this.dynamicForm.value);
+  }
 }
