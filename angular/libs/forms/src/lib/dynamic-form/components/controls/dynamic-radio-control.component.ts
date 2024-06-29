@@ -16,7 +16,7 @@ import { Option, RadioControl } from '../../dynamic-form.type';
     @if (isVisible()) {
       <div>
         <label [htmlFor]="control.id">{{ control.label }}</label>
-        @for (option of data(); track option) {
+        @for (option of options(); track option) {
           <input [attr.e2e-id]="e2eId() + '-' + option.id" type="radio" [id]="option.id" [value]="option.value"
                  [name]="control.id" />
           <label [htmlFor]="option.id">{{ option.label }}</label>
@@ -26,10 +26,10 @@ import { Option, RadioControl } from '../../dynamic-form.type';
   viewProviders
 })
 export class RadioControlComponent extends BaseControlComponent<RadioControl> implements OnInit {
-  public data: WritableSignal<Option[]> = signal([]);
+  public options: WritableSignal<Option[]> = signal([]);
 
   override ngOnInit() {
     super.ngOnInit();
-    this.data.set(this.control.options);
+    this.options.set(this.control.options);
   }
 }

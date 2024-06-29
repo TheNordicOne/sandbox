@@ -17,7 +17,7 @@ import { DropdownControl, Option } from '../../dynamic-form.type';
       <div>
         <label>{{ control.label }}</label>
         <select [attr.e2e-id]="e2eId()" [formControlName]="control.id">
-          @for (option of data(); track option) {
+          @for (option of options(); track option) {
             <option [id]="option.id" [value]="option.value">{{ option.label }}</option>
           }
         </select>
@@ -26,10 +26,10 @@ import { DropdownControl, Option } from '../../dynamic-form.type';
   viewProviders
 })
 export class DropdownControlComponent extends BaseControlComponent<DropdownControl> implements OnInit {
-  public data: WritableSignal<Option[]> = signal([]);
+  public options: WritableSignal<Option[]> = signal([]);
 
   override ngOnInit() {
     super.ngOnInit();
-    this.data.set(this.control.options);
+    this.options.set(this.control.options);
   }
 }

@@ -13,10 +13,12 @@ import { CheckboxControl } from '../../dynamic-form.type';
     ReactiveFormsModule
   ],
   template: `
-    <div>
-      <label [htmlFor]="control.id">{{ control.label }}</label>
-      <input [attr.e2e-id]="e2eId()" type="checkbox" [formControlName]="control.id">
-    </div>
+    @if (isVisible()) {
+      <div>
+        <label [htmlFor]="control.id">{{ control.label }}</label>
+        <input [attr.e2e-id]="e2eId()" type="checkbox" [formControlName]="control.id">
+      </div>
+    }
   `,
   viewProviders
 })

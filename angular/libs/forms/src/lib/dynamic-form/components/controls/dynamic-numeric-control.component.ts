@@ -13,10 +13,12 @@ import { NumericControl } from '../../dynamic-form.type';
     ReactiveFormsModule
   ],
   template: `
-    <div>
-      <label [htmlFor]="control.id">{{ control.label }}</label>
-      <input [attr.e2e-id]="e2eId()" type="number" [formControlName]="control.id">
-    </div>
+    @if (isVisible()) {
+      <div>
+        <label [htmlFor]="control.id">{{ control.label }}</label>
+        <input [attr.e2e-id]="e2eId()" type="number" [formControlName]="control.id">
+      </div>
+    }
   `,
   viewProviders
 })
