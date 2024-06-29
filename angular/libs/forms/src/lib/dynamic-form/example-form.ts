@@ -3,7 +3,7 @@ import { DynamicForm } from './dynamic-form.type';
 export const exampleForm: DynamicForm = {
   groups: [
     {
-      type: 'group',
+      type: 'flat-group',
       id: 'group-1',
       title: 'Group with all basic control types',
       content: [
@@ -69,7 +69,7 @@ export const exampleForm: DynamicForm = {
       ]
     },
     {
-      type: 'group',
+      type: 'nested-group',
       id: 'group-2',
       title: 'Group with controls using default and value properties',
       content: [
@@ -146,7 +146,7 @@ export const exampleForm: DynamicForm = {
       visible: true
     },
     {
-      type: 'group',
+      type: 'nested-group',
       id: 'group-3',
       content: [
         {
@@ -253,7 +253,7 @@ export const exampleForm: DynamicForm = {
           visible: false
         },
         {
-          type: 'group',
+          type: 'nested-group',
           id: 'group-3-1',
           title: 'Subgroup with invalid condition',
           content: [
@@ -280,21 +280,21 @@ export const exampleForm: DynamicForm = {
           ]
         },
         {
-          type: 'group',
+          type: 'nested-group',
           id: 'group-3-2',
           content: [],
           visible: true
         },
 
         {
-          type: 'group',
+          type: 'nested-group',
           id: 'group-3-3',
           content: [],
           visible: false
         }
       ],
       showIf: {
-        controlId: 'repoTemplate',
+        controlId: 'group-2.repoTemplate',
         comparer: 'eq',
         compareValue: 'doc'
       },

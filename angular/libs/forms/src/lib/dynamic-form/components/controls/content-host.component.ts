@@ -34,7 +34,8 @@ export class ContentHostComponent implements AfterViewInit {
     this.container.clear();
     let componentRef;
     switch (this.content.type) {
-      case 'group':
+      case 'flat-group':
+      case 'nested-group':
         componentRef = this.container.createComponent(DynamicFormGroupComponent);
         componentRef.setInput('group', this.content);
         return;

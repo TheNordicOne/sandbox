@@ -1,7 +1,8 @@
-@if (group.content && isVisible()) {
-  <div [attr.e2e-id]="group.id" e2e-data-content-type="group">
-    @for (control of group.content; track control) {
-      <sbf-content-host [content]="control" />
-    }
-  </div>
+@switch (group.type) {
+  @case ('flat-group') {
+    <sbf-flat-dynamic-form-group [group]="$any(group)" />
+  }
+  @case ('nested-group') {
+    <sbf-nested-dynamic-form-group [group]="$any(group)" />
+  }
 }

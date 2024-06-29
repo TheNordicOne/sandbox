@@ -15,8 +15,7 @@ export function shouldBeShown(showIf: Condition | undefined, value: unknown): bo
     return false;
   }
   const { controlId, compareValue, comparer } = showIf;
-  // @ts-expect-error: Which values are available is only known at runtime
-  const isValue = value[controlId];
+  const isValue = getValueObject(value, controlId);
   const mainConditionMet = compareValues(compareValue, isValue, comparer);
   const andConditionMet = showIf.and ? shouldBeShown(showIf.and, value) : true;
   const orConditionMet = showIf.or ? shouldBeShown(showIf.or, value) : false;
@@ -42,6 +41,42 @@ export function compareValues(compareValue: unknown, is: unknown, comparer: Comp
       asserUnreachable(comparer);
       return false;
   }
+}
+
+function getValueObject(value: unknown, path: string | string[]): unknown {
+  if (typeof path === 'string' && path.includes('.') || Array.isArray(path)) {
+    return accessNestedObject(value, path);
+  }
+  return findNestedValue(value, path);
+}
+
+function accessNestedObject(value: unknown, path: string | string[]): unknown {
+  if (typeof path === 'string') {
+    path = path.split('.');
+  }
+
+  // @ts-expect-error: Which values are available is only known at runtime
+  return path.reduce((acc, key) => (acc && acc[key] !== 'undefined') ? acc[key] : undefined, value);
+}
+
+function findNestedValue(value: unknown, key: string): unknown {
+  if (value && typeof value === 'object' && key in value) {
+    // @ts-expect-error: Which values are available is only known at runtime
+    return value[key];
+  }
+  if (value && typeof value === 'object') {
+    for (const prop in value) {
+      if (prop in value) {
+        // @ts-expect-error: Which values are available is only known at runtime
+        const nestedValue = findNestedValue(value[prop], key);
+        if (nestedValue !== undefined) {
+          return nestedValue;
+        }
+      }
+    }
+  }
+
+  return undefined;
 }
 
 function isLarger(compareValue: unknown, is: unknown): boolean {

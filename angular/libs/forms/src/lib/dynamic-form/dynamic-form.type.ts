@@ -4,14 +4,23 @@ export type DynamicForm = {
   groups: DynamicFormGroup[];
 };
 
-export type DynamicFormGroup = {
+export type BaseDynamicFormGroup = {
   id: string;
   title?: string;
-  type: 'group';
   content?: (DynamicControl | DynamicFormGroup)[];
   showIf?: Condition;
   visible?: boolean;
 };
+
+export type FlatDynamicFormGroup = BaseDynamicFormGroup & {
+  type: 'flat-group';
+}
+
+export type NestedDynamicFormGroup = BaseDynamicFormGroup & {
+  type: 'nested-group';
+}
+
+export type DynamicFormGroup = FlatDynamicFormGroup | NestedDynamicFormGroup;
 
 export type DynamicControl =
   | TextControl
@@ -73,7 +82,7 @@ export type Option = {
 };
 
 export type Condition = {
-  controlId: string;
+  controlId: string | string[];
   comparer: Comparer;
   compareValue?: unknown;
   default?: unknown;
