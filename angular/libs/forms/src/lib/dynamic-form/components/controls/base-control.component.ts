@@ -8,9 +8,7 @@ import { DynamicFormService } from '../../dynamic-form.service';
   selector: 'sbf-base-control',
   standalone: true,
   imports: [],
-  template: `
-    <ng-template #contentHost />
-  `,
+  template: ``,
   viewProviders
 })
 export class BaseControlComponent<T extends DynamicControl> implements OnInit, OnDestroy {
@@ -23,7 +21,7 @@ export class BaseControlComponent<T extends DynamicControl> implements OnInit, O
   public isVisible = computed(() => {
     const value = this.dynamicFormService.formValue();
     if (!this.control.showIf || value === null) {
-      return this.control.visible === undefined || this.control.visible;
+      return true;
     }
     return shouldBeShown(this.control.showIf, value);
   });
@@ -35,11 +33,18 @@ export class BaseControlComponent<T extends DynamicControl> implements OnInit, O
   constructor() {
     effect(() => {
       const isVisible = this.isVisible();
-      if (isVisible) {
-        this.parentFormGroup.get(this.control.id)?.enable({ emitEvent: false });
+      const formControl = this.parentFormGroup.get(this.control.id);
+      if (!formControl) {
         return;
       }
-      this.parentFormGroup.get(this.control.id)?.disable({ emitEvent: false });
+      if (isVisible || this.control.keepAttachedIfHidden) {
+        formControl.enable({ emitEvent: false });
+        return;
+      }
+      formControl.disable({ emitEvent: false });
+      if (!this.control.keepValueIfHidden) {
+        formControl.reset();
+      }
     });
   }
 

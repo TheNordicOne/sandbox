@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { AfterViewChecked, Component, computed, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DynamicForm } from './dynamic-form.type';
@@ -13,7 +13,7 @@ import { DynamicFormService } from './dynamic-form.service';
   styleUrl: './dynamic-form.component.scss',
   providers: [DynamicFormService]
 })
-export class DynamicFormComponent {
+export class DynamicFormComponent implements AfterViewChecked {
   private dynamicFormService = inject(DynamicFormService);
 
   // Note: this config could potentially also come from a service instead of being passed as an input
@@ -30,5 +30,9 @@ export class DynamicFormComponent {
 
   logToConsole() {
     console.log(this.dynamicForm.value);
+  }
+
+  ngAfterViewChecked() {
+    this.dynamicForm.updateValueAndValidity({ emitEvent: true });
   }
 }

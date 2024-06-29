@@ -1,8 +1,7 @@
-import { AfterViewChecked, Component, computed, inject, Input } from '@angular/core';
+import { Component, computed, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentHostComponent } from '../controls/content-host.component';
 import { NestedDynamicFormGroup } from '../../dynamic-form.type';
-import { ControlContainer, FormGroup } from '@angular/forms';
 import { DynamicFormService } from '../../dynamic-form.service';
 import { shouldBeShown } from '../../helper';
 
@@ -13,7 +12,7 @@ import { shouldBeShown } from '../../helper';
   templateUrl: './flat-dynamic-form-group.component.html',
   styleUrl: './flat-dynamic-form-group.component.scss'
 })
-export class FlatDynamicFormGroupComponent implements AfterViewChecked {
+export class FlatDynamicFormGroupComponent {
   @Input({ required: true }) group!: NestedDynamicFormGroup;
 
   private parentContainer = inject(ControlContainer);
@@ -26,12 +25,4 @@ export class FlatDynamicFormGroupComponent implements AfterViewChecked {
     }
     return shouldBeShown(this.group.showIf, value);
   });
-
-  get parentFormGroup() {
-    return this.parentContainer.control as FormGroup;
-  }
-
-  ngAfterViewChecked() {
-    this.parentFormGroup.updateValueAndValidity({ emitEvent: true });
-  }
 }
