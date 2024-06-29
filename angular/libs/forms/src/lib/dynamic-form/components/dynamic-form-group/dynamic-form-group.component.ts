@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, computed, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
+import { AfterViewChecked, Component, computed, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlContainer, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxControlComponent } from '../controls/dynamic-checkbox-control.component';
@@ -7,9 +7,9 @@ import { RadioControlComponent } from '../controls/dynamic-radio-control.compone
 import { NumericControlComponent } from '../controls/dynamic-numeric-control.component';
 import { TextControlComponent } from '../controls/dynamic-text-control.component';
 import { DynamicFormGroup } from '../../dynamic-form.type';
-import { Subscription } from 'rxjs';
 import { shouldBeShown } from '../../helper';
 import { ContentHostComponent } from '../controls/content-host.component';
+import { DynamicFormService } from '../../dynamic-form.service';
 
 @Component({
   selector: 'sbf-dynamic-form-group',
@@ -24,15 +24,14 @@ import { ContentHostComponent } from '../controls/content-host.component';
   templateUrl: './dynamic-form-group.component.html',
   styleUrl: './dynamic-form-group.component.scss'
 })
-export class DynamicFormGroupComponent implements OnInit, AfterViewChecked, OnDestroy {
+export class DynamicFormGroupComponent implements AfterViewChecked {
   @Input({ required: true }) group!: DynamicFormGroup;
-  private parentContainer = inject(ControlContainer);
 
-  private formValue = signal(null);
-  private formSubscription: Subscription | undefined;
+  private parentContainer = inject(ControlContainer);
+  private dynamicFormService = inject(DynamicFormService);
 
   public isVisible = computed(() => {
-    const value = this.formValue();
+    const value = this.dynamicFormService.formValue();
     if (!this.group.showIf || value === null) {
       return this.group.visible === undefined || this.group.visible;
     }
@@ -43,19 +42,7 @@ export class DynamicFormGroupComponent implements OnInit, AfterViewChecked, OnDe
     return this.parentContainer.control as FormGroup;
   }
 
-  ngOnInit(): void {
-    this.formSubscription = this.parentFormGroup.valueChanges.subscribe((value) => {
-      this.formValue.set(value);
-    });
-  }
-
   ngAfterViewChecked() {
     this.parentFormGroup.updateValueAndValidity({ emitEvent: true });
-  }
-
-  ngOnDestroy(): void {
-    if (this.formSubscription) {
-      this.formSubscription.unsubscribe();
-    }
   }
 }
