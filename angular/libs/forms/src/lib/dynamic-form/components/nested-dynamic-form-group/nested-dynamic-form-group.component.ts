@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, computed, inject, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, computed, effect, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentHostComponent } from '../controls/content-host.component';
 import { ControlContainer, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -29,6 +29,17 @@ export class NestedDynamicFormGroupComponent implements OnInit, AfterViewChecked
 
   get parentFormGroup() {
     return this.parentContainer.control as FormGroup;
+  }
+
+  constructor() {
+    effect(() => {
+      const isVisible = this.isVisible();
+      if (isVisible) {
+        this.parentFormGroup.get(this.group.id)?.enable({ emitEvent: false });
+        return;
+      }
+      this.parentFormGroup.get(this.group.id)?.disable({ emitEvent: false });
+    });
   }
 
   ngOnInit(): void {
