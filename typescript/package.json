@@ -2,7 +2,7 @@
 	"scripts": {
 		"build": "tsc",
 		"build:watch": "tsc -w",
-		"run": "ts-node index.ts",
+		"run": "ts-node src/index.ts",
 		"run:watch": "nodemon",
 		"biome:format": "npx @biomejs/biome format --write",
 		"biome:lint": "npx @biomejs/biome lint --write",
