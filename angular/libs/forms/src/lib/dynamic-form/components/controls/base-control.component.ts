@@ -49,11 +49,14 @@ export class BaseControlComponent<T extends DynamicControl> implements OnInit, O
         return;
       }
       if (isVisible || this.control.keepAttachedIfHidden) {
+        if (this.control.resetValueIfHidden) {
+          formControl.reset();
+        }
         formControl.enable({ emitEvent: false });
         return;
       }
       formControl.disable({ emitEvent: false });
-      if (!this.control.keepValueIfHidden) {
+      if (this.control.resetValueIfHidden) {
         formControl.reset();
       }
     });

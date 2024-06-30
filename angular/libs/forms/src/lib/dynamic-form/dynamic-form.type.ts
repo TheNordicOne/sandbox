@@ -34,7 +34,7 @@ export type BaseControl = {
   id: string;
   label: string;
   required?: boolean;
-  keepValueIfHidden?: boolean;
+  resetValueIfHidden?: boolean;
   keepAttachedIfHidden?: boolean;
   showIf?: Condition;
 };

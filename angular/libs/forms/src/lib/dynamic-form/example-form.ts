@@ -141,6 +141,38 @@ export const exampleForm: DynamicForm = {
           label: 'Send confirmation mail',
           value: false,
           default: true
+        },
+        {
+          type: 'text',
+          id: 'confirmationMailTarget',
+          label: 'E-Mail',
+          value: 'dummy@sandbox.com',
+          keepAttachedIfHidden: true,
+          resetValueIfHidden: false,
+          showIf: {
+            controlId: 'sendConfirmation',
+            comparer: 'eq',
+            compareValue: true
+          }
+        },
+        {
+          type: 'checkbox',
+          id: 'editProjectId',
+          label: 'Edit Project ID',
+          value: false,
+          default: false
+        },
+        {
+          type: 'text',
+          id: 'projectId',
+          label: 'Project ID',
+          default: '123456789',
+          resetValueIfHidden: false,
+          showIf: {
+            controlId: 'editProjectId',
+            comparer: 'eq',
+            compareValue: true
+          }
         }
       ],
     },
@@ -212,7 +244,7 @@ export const exampleForm: DynamicForm = {
           type: 'numeric',
           id: 'frequency',
           label: 'Frequency (Sprint / Cycle Duration)',
-          keepValueIfHidden: true,
+          resetValueIfHidden: true,
           showIf:
             {
               controlId: 'docAmount',
