@@ -1,0 +1,17 @@
+{
+	"scripts": {
+		"build": "tsc",
+		"build:watch": "tsc -w",
+		"run": "ts-node index.ts",
+		"run:watch": "nodemon",
+		"biome:format": "npx @biomejs/biome format --write",
+		"biome:lint": "npx @biomejs/biome lint --write",
+		"biome:check": "npx @biomejs/biome check --write"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"nodemon": "^3.1.4",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.2"
+	}
+}
