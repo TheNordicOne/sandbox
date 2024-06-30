@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReusableFormPartsComponent } from '../reusable-form-parts/reusable-form-parts.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +10,8 @@ import { exampleForm } from '../dynamic-form/example-form';
   standalone: true,
   imports: [CommonModule, ReusableFormPartsComponent, ReactiveFormsModule, DynamicFormComponent],
   templateUrl: './forms.component.html',
-  styleUrl: './forms.component.scss'
+  styleUrl: './forms.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class FormsComponent {
   private fb = inject(FormBuilder);

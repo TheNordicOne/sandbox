@@ -14,13 +14,15 @@ import { Option, RadioControl } from '../../dynamic-form.type';
   ],
   template: `
     @if (isVisible()) {
-      <div>
+      <div class="form-row">
         <label [htmlFor]="control.id">{{ control.label }}</label>
-        @for (option of options(); track option) {
-          <input [attr.e2e-id]="e2eId() + '-' + option.id" type="radio" [id]="option.id" [value]="option.value"
-                 [name]="control.id" />
-          <label [htmlFor]="option.id">{{ option.label }}</label>
-        }
+        <div>
+          @for (option of options(); track option) {
+            <input [attr.e2e-id]="e2eId() + '-' + option.id" type="radio" [id]="option.id" [value]="option.value"
+                   [name]="control.id" />
+            <label [htmlFor]="option.id">{{ option.label }}</label>
+          }
+        </div>
       </div>
     }`,
   changeDetection: ChangeDetectionStrategy.OnPush,

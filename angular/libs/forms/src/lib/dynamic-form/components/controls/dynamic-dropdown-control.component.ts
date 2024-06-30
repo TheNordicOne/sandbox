@@ -14,7 +14,7 @@ import { DropdownControl, Option } from '../../dynamic-form.type';
   ],
   template: `
     @if (isVisible()) {
-      <div>
+      <div class="form-row">
         <label>{{ control.label }}</label>
         <select [attr.e2e-id]="e2eId()" [formControlName]="control.id">
           @for (option of options(); track option) {
