@@ -1,5 +1,7 @@
+import { pseudoEnumDemo } from "./concepts/pesudo-enums";
+
 export function main() {
-	console.log("main");
+	pseudoEnumDemo();
 }
 
 main();
