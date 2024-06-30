@@ -1,8 +1,8 @@
 {
-	"watch": ["src"],
+	"watch": ["concepts"],
 	"ext": "ts,json",
 	"ignore": ["src/**/*.spec.ts"],
-	"exec": "ts-node ./src/index.ts",
+	"exec": "ts-node ./index.ts",
 	"execMap": {
 		"ts": "ts-node"
 	}
