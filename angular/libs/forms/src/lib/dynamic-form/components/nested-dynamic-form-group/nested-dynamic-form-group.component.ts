@@ -14,7 +14,7 @@ import { NestedDynamicFormGroup } from '../../dynamic-form.type';
   styleUrl: './nested-dynamic-form-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NestedDynamicFormGroupComponent implements OnInit {
+export class NestedDynamicFormGroupComponent implements OnInit, OnDestroy {
   @Input({ required: true }) group!: NestedDynamicFormGroup;
 
   private parentContainer = inject(ControlContainer);
@@ -45,5 +45,9 @@ export class NestedDynamicFormGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.parentFormGroup.addControl(this.group.id, new FormGroup({}), { emitEvent: false });
+  }
+
+  ngOnDestroy() {
+    this.parentFormGroup.removeControl(this.group.id);
   }
 }
