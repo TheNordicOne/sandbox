@@ -143,11 +143,11 @@ export const exampleForm: DynamicForm = {
           default: true
         }
       ],
-      visible: true
     },
     {
       type: 'nested-group',
       id: 'group-3',
+      keepAttachedIfHidden: true,
       content: [
         {
           type: 'numeric',
@@ -163,7 +163,6 @@ export const exampleForm: DynamicForm = {
             comparer: 'lt',
             compareValue: 1000
           },
-          visible: false
         },
         {
           type: 'radio',
@@ -213,6 +212,7 @@ export const exampleForm: DynamicForm = {
           type: 'numeric',
           id: 'frequency',
           label: 'Frequency (Sprint / Cycle Duration)',
+          keepValueIfHidden: true,
           showIf:
             {
               controlId: 'docAmount',
@@ -229,7 +229,6 @@ export const exampleForm: DynamicForm = {
                 }
               }
             },
-          visible: false
         },
         {
           type: 'text',
@@ -239,7 +238,6 @@ export const exampleForm: DynamicForm = {
             controlId: 'company',
             comparer: 'empty'
           },
-          visible: false
         },
         {
           type: 'text',
@@ -250,7 +248,6 @@ export const exampleForm: DynamicForm = {
             comparer: 'eqOrEmpty',
             compareValue: 'none'
           },
-          visible: false
         },
         {
           type: 'nested-group',
@@ -283,14 +280,12 @@ export const exampleForm: DynamicForm = {
           type: 'nested-group',
           id: 'group-3-2',
           content: [],
-          visible: true
         },
 
         {
           type: 'nested-group',
           id: 'group-3-3',
           content: [],
-          visible: false
         }
       ],
       showIf: {
@@ -298,7 +293,6 @@ export const exampleForm: DynamicForm = {
         comparer: 'eq',
         compareValue: 'doc'
       },
-      visible: false
     }
   ]
 };

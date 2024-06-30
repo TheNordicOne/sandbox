@@ -1,7 +1,5 @@
-@if (group.content && isVisible()) {
-  <div [attr.e2e-id]="group.id" e2e-data-content-type="group">
-    @for (control of group.content; track control) {
-      <sbf-content-host [content]="control" />
-    }
-  </div>
-}
+<div [attr.e2e-id]="group.id" e2e-data-content-type="group" [hidden]="!isVisible()">
+  @for (control of group.content; track control) {
+    <sbf-content-host [content]="control" />
+  }
+</div>

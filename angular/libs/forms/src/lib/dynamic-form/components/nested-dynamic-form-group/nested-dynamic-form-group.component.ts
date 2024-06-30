@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, computed, effect, inject, Input, OnInit } from '@angular/core';
+import { Component, computed, effect, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentHostComponent } from '../controls/content-host.component';
 import { ControlContainer, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { NestedDynamicFormGroup } from '../../dynamic-form.type';
   templateUrl: './nested-dynamic-form-group.component.html',
   styleUrl: './nested-dynamic-form-group.component.scss'
 })
-export class NestedDynamicFormGroupComponent implements OnInit, AfterViewChecked {
+export class NestedDynamicFormGroupComponent implements OnInit {
   @Input({ required: true }) group!: NestedDynamicFormGroup;
 
   private parentContainer = inject(ControlContainer);
@@ -22,7 +22,7 @@ export class NestedDynamicFormGroupComponent implements OnInit, AfterViewChecked
   public isVisible = computed(() => {
     const value = this.dynamicFormService.formValue();
     if (!this.group.showIf || value === null) {
-      return this.group.visible === undefined || this.group.visible;
+      return true;
     }
     return shouldBeShown(this.group.showIf, value);
   });
@@ -34,7 +34,7 @@ export class NestedDynamicFormGroupComponent implements OnInit, AfterViewChecked
   constructor() {
     effect(() => {
       const isVisible = this.isVisible();
-      if (isVisible) {
+      if (isVisible || this.group.keepAttachedIfHidden) {
         this.parentFormGroup.get(this.group.id)?.enable({ emitEvent: false });
         return;
       }
@@ -43,10 +43,6 @@ export class NestedDynamicFormGroupComponent implements OnInit, AfterViewChecked
   }
 
   ngOnInit(): void {
-    this.parentFormGroup.addControl(this.group.id, new FormGroup({}));
-  }
-
-  ngAfterViewChecked() {
-    this.parentFormGroup.updateValueAndValidity({ emitEvent: true });
+    this.parentFormGroup.addControl(this.group.id, new FormGroup({}), { emitEvent: false });
   }
 }

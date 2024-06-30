@@ -9,7 +9,6 @@ export type BaseDynamicFormGroup = {
   title?: string;
   content?: (DynamicControl | DynamicFormGroup)[];
   showIf?: Condition;
-  visible?: boolean;
 };
 
 export type FlatDynamicFormGroup = BaseDynamicFormGroup & {
@@ -18,6 +17,7 @@ export type FlatDynamicFormGroup = BaseDynamicFormGroup & {
 
 export type NestedDynamicFormGroup = BaseDynamicFormGroup & {
   type: 'nested-group';
+  keepAttachedIfHidden?: boolean;
 }
 
 export type DynamicFormGroup = FlatDynamicFormGroup | NestedDynamicFormGroup;
@@ -34,7 +34,8 @@ export type BaseControl = {
   id: string;
   label: string;
   required?: boolean;
-  visible?: boolean;
+  keepValueIfHidden?: boolean;
+  keepAttachedIfHidden?: boolean;
   showIf?: Condition;
 };
 

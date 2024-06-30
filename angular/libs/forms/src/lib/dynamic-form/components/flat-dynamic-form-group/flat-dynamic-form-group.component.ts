@@ -14,14 +14,12 @@ import { shouldBeShown } from '../../helper';
 })
 export class FlatDynamicFormGroupComponent {
   @Input({ required: true }) group!: NestedDynamicFormGroup;
-
-  private parentContainer = inject(ControlContainer);
   private dynamicFormService = inject(DynamicFormService);
 
   public isVisible = computed(() => {
     const value = this.dynamicFormService.formValue();
     if (!this.group.showIf || value === null) {
-      return this.group.visible === undefined || this.group.visible;
+      return true;
     }
     return shouldBeShown(this.group.showIf, value);
   });
