@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DynamicForm } from './dynamic-form.type';
@@ -11,6 +11,7 @@ import { DynamicFormService } from './dynamic-form.service';
   imports: [CommonModule, ReactiveFormsModule, DynamicFormGroupComponent],
   templateUrl: './dynamic-form.component.html',
   styleUrl: './dynamic-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DynamicFormService]
 })
 export class DynamicFormComponent {

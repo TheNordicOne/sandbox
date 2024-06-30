@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { viewProviders } from '../../helper';
@@ -23,6 +23,7 @@ import { Option, RadioControl } from '../../dynamic-form.type';
         }
       </div>
     }`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders
 })
 export class RadioControlComponent extends BaseControlComponent<RadioControl> implements OnInit {

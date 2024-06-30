@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { viewProviders } from '../../helper';
@@ -20,6 +20,7 @@ import { DropdownControlComponent } from './dynamic-dropdown-control.component';
   template: `
     <ng-template #contentHost />
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders
 })
 export class ContentHostComponent implements AfterViewInit {

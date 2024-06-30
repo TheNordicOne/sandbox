@@ -1,4 +1,4 @@
-import { Component, computed, inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentHostComponent } from '../controls/content-host.component';
 import { NestedDynamicFormGroup } from '../../dynamic-form.type';
@@ -10,7 +10,8 @@ import { shouldBeShown } from '../../helper';
   standalone: true,
   imports: [CommonModule, ContentHostComponent],
   templateUrl: './flat-dynamic-form-group.component.html',
-  styleUrl: './flat-dynamic-form-group.component.scss'
+  styleUrl: './flat-dynamic-form-group.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FlatDynamicFormGroupComponent {
   @Input({ required: true }) group!: NestedDynamicFormGroup;

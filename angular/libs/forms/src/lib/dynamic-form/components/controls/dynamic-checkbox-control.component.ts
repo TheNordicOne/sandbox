@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { viewProviders } from '../../helper';
@@ -20,6 +20,7 @@ import { CheckboxControl } from '../../dynamic-form.type';
       </div>
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders
 })
 export class CheckboxControlComponent extends BaseControlComponent<CheckboxControl> {

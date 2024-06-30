@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { viewProviders } from '../../helper';
@@ -23,6 +23,7 @@ import { DropdownControl, Option } from '../../dynamic-form.type';
         </select>
       </div>
     }`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders
 })
 export class DropdownControlComponent extends BaseControlComponent<DropdownControl> implements OnInit {

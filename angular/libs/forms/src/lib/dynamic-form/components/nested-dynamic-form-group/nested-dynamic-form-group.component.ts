@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentHostComponent } from '../controls/content-host.component';
 import { ControlContainer, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +11,8 @@ import { NestedDynamicFormGroup } from '../../dynamic-form.type';
   standalone: true,
   imports: [CommonModule, ContentHostComponent, ReactiveFormsModule],
   templateUrl: './nested-dynamic-form-group.component.html',
-  styleUrl: './nested-dynamic-form-group.component.scss'
+  styleUrl: './nested-dynamic-form-group.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NestedDynamicFormGroupComponent implements OnInit {
   @Input({ required: true }) group!: NestedDynamicFormGroup;

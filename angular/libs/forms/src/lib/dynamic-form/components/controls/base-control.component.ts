@@ -1,5 +1,15 @@
 import { DynamicControl } from '../../dynamic-form.type';
-import { Component, computed, effect, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  signal
+} from '@angular/core';
 import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
 import { shouldBeShown, viewProviders } from '../../helper';
 import { DynamicFormService } from '../../dynamic-form.service';
@@ -9,6 +19,7 @@ import { DynamicFormService } from '../../dynamic-form.service';
   standalone: true,
   imports: [],
   template: ``,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders
 })
 export class BaseControlComponent<T extends DynamicControl> implements OnInit, OnDestroy {
