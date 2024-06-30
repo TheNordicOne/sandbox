@@ -44,7 +44,7 @@ export class BaseControlComponent<T extends DynamicControl> implements OnInit, O
   constructor() {
     effect(() => {
       const isVisible = this.isVisible();
-      const formControl = this.parentFormGroup.get(this.control.id);
+      const formControl = this.parentFormGroup?.get(this.control.id);
       if (!formControl) {
         return;
       }
@@ -71,7 +71,7 @@ export class BaseControlComponent<T extends DynamicControl> implements OnInit, O
   }
 
   ngOnDestroy(): void {
-    this.parentFormGroup.removeControl(this.control.id);
+    this.parentFormGroup?.removeControl(this.control.id);
   }
 
   private getInitialValue() {

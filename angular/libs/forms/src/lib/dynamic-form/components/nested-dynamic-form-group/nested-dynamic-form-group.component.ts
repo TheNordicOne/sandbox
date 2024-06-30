@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentHostComponent } from '../controls/content-host.component';
 import { ControlContainer, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -28,18 +28,27 @@ export class NestedDynamicFormGroupComponent implements OnInit, OnDestroy {
     return shouldBeShown(this.group.showIf, value);
   });
 
+  public isAttached = computed(() => this.isVisible() || this.group.keepAttachedIfHidden);
+
   get parentFormGroup() {
     return this.parentContainer.control as FormGroup;
   }
 
   constructor() {
     effect(() => {
-      const isVisible = this.isVisible();
-      if (isVisible || this.group.keepAttachedIfHidden) {
-        this.parentFormGroup.get(this.group.id)?.enable({ emitEvent: false });
+      const isAttached = this.isAttached();
+      if (!this.parentFormGroup) {
         return;
       }
-      this.parentFormGroup.get(this.group.id)?.disable({ emitEvent: false });
+      const formGroupStillExists = !!this.parentFormGroup.get(this.group.id);
+      if (isAttached && !formGroupStillExists) {
+        this.parentFormGroup.addControl(this.group.id, new FormGroup({}));
+        return;
+      }
+      if (isAttached) {
+        return;
+      }
+      this.parentFormGroup.removeControl(this.group.id);
     });
   }
 
@@ -48,6 +57,6 @@ export class NestedDynamicFormGroupComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.parentFormGroup.removeControl(this.group.id);
+    this.parentFormGroup?.removeControl(this.group.id);
   }
 }
