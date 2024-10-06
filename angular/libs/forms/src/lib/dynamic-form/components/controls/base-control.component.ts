@@ -63,6 +63,7 @@ export class BaseControlComponent<T extends DynamicControl> implements OnInit, O
   }
 
   ngOnInit(): void {
+
     const initialValue = this.getInitialValue();
     const formControl = new FormControl(initialValue);
     if (this.control.required) {

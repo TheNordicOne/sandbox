@@ -1,5 +1,5 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, OnInit, Type } from '@angular/core';
+import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { viewProviders } from '../../helper';
 import { CheckboxControlComponent } from './dynamic-checkbox-control.component';
@@ -15,52 +15,55 @@ import { DropdownControlComponent } from './dynamic-dropdown-control.component';
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgComponentOutlet
   ],
   template: `
-    <ng-template #contentHost />
+    <ng-container [ngComponentOutlet]="component"
+                  [ngComponentOutletInputs]="componentInputs" />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders
 })
-export class ContentHostComponent implements AfterViewInit {
-  @ViewChild('contentHost', { read: ViewContainerRef, static: true }) container!: ViewContainerRef;
+export class ContentHostComponent implements OnInit {
   @Input({ required: true }) content!: (DynamicControl | DynamicFormGroup);
 
-  ngAfterViewInit(): void {
+  public component: Type<unknown> | null = null;
+  public componentInputs: Record<string, unknown> | undefined;
+
+  ngOnInit(): void {
     this.loadControls();
   }
 
   private loadControls() {
-    this.container.clear();
-    let componentRef;
+    this.component = null;
+
     switch (this.content.type) {
       case 'flat-group':
       case 'nested-group':
-        componentRef = this.container.createComponent(DynamicFormGroupComponent);
-        componentRef.setInput('group', this.content);
+        this.component = DynamicFormGroupComponent;
+        this.componentInputs = { group: this.content };
         return;
       case 'text':
-        componentRef = this.container.createComponent(TextControlComponent);
+        this.component = TextControlComponent;
         break;
       case 'numeric':
-        componentRef = this.container.createComponent(NumericControlComponent);
+        this.component = NumericControlComponent;
         break;
       case 'radio':
-        componentRef = this.container.createComponent(RadioControlComponent);
+        this.component = RadioControlComponent;
         break;
       case 'dropdown':
-        componentRef = this.container.createComponent(DropdownControlComponent);
+        this.component = DropdownControlComponent;
         break;
       case 'checkbox':
-        componentRef = this.container.createComponent(CheckboxControlComponent);
+        this.component = CheckboxControlComponent;
         break;
     }
-    if (!componentRef) {
+    if (!this.component) {
       return;
     }
 
-    // Note: since setInput is not type safe anyway, we are reducing the boilerplate for now
-    componentRef.setInput('control', this.content);
+    this.componentInputs = { control: this.content };
   }
 }
