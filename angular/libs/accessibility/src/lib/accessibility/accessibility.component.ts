@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TabsComponent } from '../tabs/tabs.component';
+import { TabPanelComponent } from '../tabs/tab-panel.component';
 
 @Component({
   selector: 'sba-accessibility',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TabsComponent, TabPanelComponent],
   templateUrl: './accessibility.component.html',
   styleUrl: './accessibility.component.scss',
 })

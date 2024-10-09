@@ -6,7 +6,11 @@ export const appRoutes: Route[] = [
     path: 'forms',
     loadChildren: () => import('sandbox-forms').then((m) => m.formsRoutes),
   },
-
+  {
+    path: 'accessibility',
+    loadChildren: () =>
+      import('sandbox-accessibility').then((m) => m.accessibilityRoutes),
+  },
   {
     path: 'home',
     component: DashboardComponent,
