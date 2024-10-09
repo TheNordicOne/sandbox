@@ -4,15 +4,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 export const appRoutes: Route[] = [
   {
     path: 'forms',
-    loadChildren: () => import('sandbox-forms').then(m => m.formsRoutes)
+    loadChildren: () => import('sandbox-forms').then((m) => m.formsRoutes),
   },
 
   {
     path: 'home',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: '**',
-    redirectTo: 'home'
-  }
+    redirectTo: 'home',
+  },
 ];
