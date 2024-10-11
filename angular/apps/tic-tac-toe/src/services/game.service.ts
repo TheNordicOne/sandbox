@@ -1,9 +1,9 @@
 import { Injectable, untracked } from '@angular/core'
-import { GameBoard, GameState, Player, PlayerSymbol } from '../types/game.types'
+import { signalSlice } from 'ngxtension/signal-slice'
+import { Observable, map } from 'rxjs'
 import { INITIAL_GAME_BOARD, PLAYERS } from '../helper/game.constants'
 import { WINNING_COMBINATIONS } from '../helper/winning-combinations.constants'
-import { signalSlice } from 'ngxtension/signal-slice'
-import { map, Observable } from 'rxjs'
+import { GameBoard, GameState, Player, PlayerSymbol } from '../types/game.types'
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,6 @@ export class GameService {
     players: { ...structuredClone(PLAYERS) },
   }
 
-  // @ts-ignore
   state = signalSlice({
     initialState: this.initialState,
     selectors: (state) => ({
@@ -29,7 +28,7 @@ export class GameService {
         return state().players['X']
       },
       gameBoard: () => {
-        let gameBoard: GameBoard = <GameBoard>[
+        const gameBoard: GameBoard = <GameBoard>[
           ...INITIAL_GAME_BOARD.map((array) => [...array]),
         ]
 
@@ -44,7 +43,7 @@ export class GameService {
       },
       winner: () => {
         let winner: Player | null = null
-        // @ts-ignore
+        // @ts-expect-error: Missing typing in signalSlice
         const gameBoard = state.gameBoard()
 
         for (const combination of WINNING_COMBINATIONS) {
@@ -68,7 +67,7 @@ export class GameService {
         return winner
       },
       hasDraw: () => {
-        // @ts-ignore
+        // @ts-expect-error: Missing typing in signalSlice
         return state.turns().length === 9 && untracked(() => !state.winner())
       },
     }),
@@ -82,7 +81,7 @@ export class GameService {
       ) =>
         $action.pipe(
           map(({ rowIndex, colIndex }) => {
-            // @ts-ignore
+            // @ts-expect-error: Missing typing in signalSlice
             const currentPlayer = state.activePlayer()
             const prevTurns = state().turns
 
