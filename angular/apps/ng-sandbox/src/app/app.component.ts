@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core'
+import { RouterModule } from '@angular/router'
 
 @Component({
   standalone: true,
@@ -9,5 +9,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'ng-sandbox';
+  title = 'ng-sandbox'
 }

@@ -1,5 +1,5 @@
-export type ObjectValues<T> = T[keyof T];
+export type ObjectValues<T> = T[keyof T]
 
 export function asserUnreachable(x: never) {
-  throw new Error('Unreachable code');
+  throw new Error('Unreachable code')
 }

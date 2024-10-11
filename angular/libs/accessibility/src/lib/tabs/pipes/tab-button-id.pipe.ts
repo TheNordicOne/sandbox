@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core'
 
 @Pipe({
   name: 'tabButtonId',
@@ -6,6 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TabButtonIdPipe implements PipeTransform {
   transform(key: string): unknown {
-    return `tab-${key}`;
+    return `tab-${key}`
   }
 }

@@ -3,14 +3,14 @@ import {
   Component,
   contentChildren,
   viewChildren,
-} from '@angular/core';
-import { NgClass } from '@angular/common';
-import { TabButtonIdPipe } from './pipes/tab-button-id.pipe';
-import { TabIndexPipe } from './pipes/tab-index.pipe';
-import { TabComponent } from './tab.component';
-import { FocusKeyManager } from '@angular/cdk/a11y';
-import { TabService } from './services/tab.service';
-import { TabPanelComponent } from './tab-panel.component';
+} from '@angular/core'
+import { NgClass } from '@angular/common'
+import { TabButtonIdPipe } from './pipes/tab-button-id.pipe'
+import { TabIndexPipe } from './pipes/tab-index.pipe'
+import { TabComponent } from './tab.component'
+import { FocusKeyManager } from '@angular/cdk/a11y'
+import { TabService } from './services/tab.service'
+import { TabPanelComponent } from './tab-panel.component'
 
 @Component({
   selector: 'sba-tabs',
@@ -30,25 +30,25 @@ import { TabPanelComponent } from './tab-panel.component';
   providers: [TabService],
 })
 export class TabsComponent implements AfterViewInit {
-  tabs = viewChildren<TabComponent>(TabComponent);
+  tabs = viewChildren<TabComponent>(TabComponent)
 
-  keyManager: FocusKeyManager<TabComponent> | undefined;
-  tabPanels = contentChildren<TabPanelComponent>(TabPanelComponent);
+  keyManager: FocusKeyManager<TabComponent> | undefined
+  tabPanels = contentChildren<TabPanelComponent>(TabPanelComponent)
 
   onKeydown(event: KeyboardEvent) {
-    const { key } = event;
+    const { key } = event
     if (key === 'ArrowUp' || key === 'ArrowDown') {
-      return;
+      return
     }
 
-    this.keyManager?.onKeydown(event);
+    this.keyManager?.onKeydown(event)
   }
 
   ngAfterViewInit() {
     this.keyManager = new FocusKeyManager<TabComponent>(this.tabs())
       .withWrap()
       .withHomeAndEnd()
-      .withHorizontalOrientation('ltr');
-    this.keyManager?.setFirstItemActive();
+      .withHorizontalOrientation('ltr')
+    this.keyManager?.setFirstItemActive()
   }
 }

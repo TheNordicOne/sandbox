@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { GameService } from '../services/game.service';
+import { Component, inject } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { GameService } from '../services/game.service'
 
 @Component({
   selector: 'app-game-over',
@@ -24,11 +24,11 @@ import { GameService } from '../services/game.service';
   `,
 })
 export class GameOverComponent {
-  private gameService = inject(GameService);
-  winner = this.gameService.state.winner;
-  hasDraw = this.gameService.state.hasDraw;
+  private gameService = inject(GameService)
+  winner = this.gameService.state.winner
+  hasDraw = this.gameService.state.hasDraw
 
   onRestart() {
-    this.gameService.state.restart();
+    this.gameService.state.restart()
   }
 }

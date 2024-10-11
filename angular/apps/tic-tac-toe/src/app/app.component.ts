@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { PlayerComponent } from '../components/player.component';
-import { PLAYERS } from '../helper/game.constants';
-import { GameOverComponent } from '../components/game-over.component';
-import { LogComponent } from '../components/log.component';
-import { GameBoardComponent } from '../components/game-board.component';
+import { Component } from '@angular/core'
+import { PlayerComponent } from '../components/player.component'
+import { PLAYERS } from '../helper/game.constants'
+import { GameOverComponent } from '../components/game-over.component'
+import { LogComponent } from '../components/log.component'
+import { GameBoardComponent } from '../components/game-board.component'
 
 @Component({
   standalone: true,
@@ -18,5 +18,5 @@ import { GameBoardComponent } from '../components/game-board.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  protected readonly PLAYERS = PLAYERS;
+  protected readonly PLAYERS = PLAYERS
 }

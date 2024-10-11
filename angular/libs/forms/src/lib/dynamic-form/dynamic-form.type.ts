@@ -1,95 +1,94 @@
-import { ObjectValues } from '@sandbox/utils';
+import { ObjectValues } from '@sandbox/utils'
 
 export type DynamicForm = {
-  groups: DynamicFormGroup[];
-};
+  groups: DynamicFormGroup[]
+}
 
 export type BaseDynamicFormGroup = {
-  id: string;
-  title?: string;
-  content?: (DynamicControl | DynamicFormGroup)[];
-  showIf?: Condition;
-};
+  id: string
+  title?: string
+  content?: (DynamicControl | DynamicFormGroup)[]
+  showIf?: Condition
+}
 
 export type FlatDynamicFormGroup = BaseDynamicFormGroup & {
-  type: 'flat-group';
+  type: 'flat-group'
 }
 
 export type NestedDynamicFormGroup = BaseDynamicFormGroup & {
-  type: 'nested-group';
-  keepAttachedIfHidden?: boolean;
+  type: 'nested-group'
+  keepAttachedIfHidden?: boolean
 }
 
-export type DynamicFormGroup = FlatDynamicFormGroup | NestedDynamicFormGroup;
+export type DynamicFormGroup = FlatDynamicFormGroup | NestedDynamicFormGroup
 
 export type DynamicControl =
   | TextControl
   | NumericControl
   | RadioControl
   | DropdownControl
-  | CheckboxControl;
-
+  | CheckboxControl
 
 export type BaseControl = {
-  id: string;
-  label: string;
-  required?: boolean;
-  resetValueIfHidden?: boolean;
-  keepAttachedIfHidden?: boolean;
-  showIf?: Condition;
-};
+  id: string
+  label: string
+  required?: boolean
+  resetValueIfHidden?: boolean
+  keepAttachedIfHidden?: boolean
+  showIf?: Condition
+}
 
 export type TextControl = BaseControl & {
-  type: 'text';
-  value?: string;
-  default?: string;
-  minLength?: number;
-  maxLength?: number;
-};
+  type: 'text'
+  value?: string
+  default?: string
+  minLength?: number
+  maxLength?: number
+}
 
 export type NumericControl = BaseControl & {
-  type: 'numeric';
-  value?: number;
-  default?: number;
-  min?: number;
-  max?: number;
-  allowNegative?: boolean;
-};
+  type: 'numeric'
+  value?: number
+  default?: number
+  min?: number
+  max?: number
+  allowNegative?: boolean
+}
 
 export type RadioControl = BaseControl & {
-  type: 'radio';
-  value?: string;
-  options: Option[];
-  default?: string;
-};
+  type: 'radio'
+  value?: string
+  options: Option[]
+  default?: string
+}
 
 export type DropdownControl = BaseControl & {
-  type: 'dropdown';
-  value?: string;
-  options: Option[];
-  default?: string;
-};
+  type: 'dropdown'
+  value?: string
+  options: Option[]
+  default?: string
+}
 
 export type CheckboxControl = BaseControl & {
-  type: 'checkbox';
-  value?: boolean;
-  default?: boolean;
-};
+  type: 'checkbox'
+  value?: boolean
+  default?: boolean
+}
 
 export type Option = {
-  id: string;
-  label: string;
-  value: string;
-};
+  id: string
+  label: string
+  value: string
+}
 
 export type Condition = {
-  controlId: string | string[];
-  comparer: Comparer;
-  compareValue?: unknown;
-  default?: unknown;
-  and?: Condition;
-  or?: Condition;
-};
+  controlId: string | string[]
+  comparer: Comparer
+  compareValue?: unknown
+  default?: unknown
+  and?: Condition
+  or?: Condition
+}
 
 export const COMPARER = {
   EQUALS: 'eq',
@@ -97,7 +96,7 @@ export const COMPARER = {
   SMALLER: 'st',
   EMPTY: 'empty',
   NOT_EMPTY: 'notEmpty',
-  EQUAL_OR_EMPTY: 'eqOrEmpty'
-} as const;
+  EQUAL_OR_EMPTY: 'eqOrEmpty',
+} as const
 
-export type Comparer = ObjectValues<typeof COMPARER>;
+export type Comparer = ObjectValues<typeof COMPARER>

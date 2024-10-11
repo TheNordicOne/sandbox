@@ -1,4 +1,4 @@
-import { DynamicForm } from './dynamic-form.type';
+import { DynamicForm } from './dynamic-form.type'
 
 export const exampleForm: DynamicForm = {
   groups: [
@@ -10,12 +10,12 @@ export const exampleForm: DynamicForm = {
         {
           type: 'text',
           id: 'company',
-          label: 'Name of Company'
+          label: 'Name of Company',
         },
         {
           type: 'numeric',
           id: 'licenses',
-          label: 'Amount of Licenses'
+          label: 'Amount of Licenses',
         },
         {
           type: 'radio',
@@ -25,19 +25,19 @@ export const exampleForm: DynamicForm = {
             {
               id: 'plan-123',
               label: 'Free',
-              value: 'p123'
+              value: 'p123',
             },
             {
               id: 'plan-456',
               label: 'Medium',
-              value: 'p456'
+              value: 'p456',
             },
             {
               id: 'plan-789',
               label: 'Large',
-              value: 'p789'
-            }
-          ]
+              value: 'p789',
+            },
+          ],
         },
         {
           type: 'dropdown',
@@ -47,26 +47,26 @@ export const exampleForm: DynamicForm = {
             {
               id: 'package-1',
               label: 'Product 1 Only',
-              value: 'pack-1'
+              value: 'pack-1',
             },
             {
               id: 'package-2',
               label: 'Product 2 Only',
-              value: 'pack-2'
+              value: 'pack-2',
             },
             {
               id: 'package-all',
               label: 'All Products',
-              value: 'pack-all'
-            }
-          ]
+              value: 'pack-all',
+            },
+          ],
         },
         {
           type: 'checkbox',
           id: 'termsAccepted',
-          label: 'I Accept Terms'
-        }
-      ]
+          label: 'I Accept Terms',
+        },
+      ],
     },
     {
       type: 'nested-group',
@@ -78,14 +78,14 @@ export const exampleForm: DynamicForm = {
           id: 'username',
           label: 'Username',
           value: 'SuperGitUser',
-          default: 'UsernameSuggestion123'
+          default: 'UsernameSuggestion123',
         },
         {
           type: 'numeric',
           id: 'repositories',
           label: 'Repositories to create',
           value: 2,
-          default: 1
+          default: 1,
         },
         {
           type: 'radio',
@@ -97,14 +97,14 @@ export const exampleForm: DynamicForm = {
             {
               id: 'public-repos-option',
               label: 'Public',
-              value: 'public'
+              value: 'public',
             },
             {
               id: 'private-repos-option',
               label: 'Private',
-              value: 'private'
-            }
-          ]
+              value: 'private',
+            },
+          ],
         },
         {
           type: 'dropdown',
@@ -116,31 +116,31 @@ export const exampleForm: DynamicForm = {
             {
               id: 'template-1',
               label: 'None',
-              value: 'none'
+              value: 'none',
             },
             {
               id: 'template-2',
               label: 'Monorepo',
-              value: 'mono'
+              value: 'mono',
             },
             {
               id: 'template-3',
               label: 'Documentation',
-              value: 'doc'
+              value: 'doc',
             },
             {
               id: 'template-3',
               label: 'Note Management',
-              value: 'note'
-            }
-          ]
+              value: 'note',
+            },
+          ],
         },
         {
           type: 'checkbox',
           id: 'sendConfirmation',
           label: 'Send confirmation mail',
           value: false,
-          default: true
+          default: true,
         },
         {
           type: 'text',
@@ -152,15 +152,15 @@ export const exampleForm: DynamicForm = {
           showIf: {
             controlId: 'sendConfirmation',
             comparer: 'eq',
-            compareValue: true
-          }
+            compareValue: true,
+          },
         },
         {
           type: 'checkbox',
           id: 'editProjectId',
           label: 'Edit Project ID',
           value: false,
-          default: false
+          default: false,
         },
         {
           type: 'text',
@@ -171,9 +171,9 @@ export const exampleForm: DynamicForm = {
           showIf: {
             controlId: 'editProjectId',
             comparer: 'eq',
-            compareValue: true
-          }
-        }
+            compareValue: true,
+          },
+        },
       ],
     },
     {
@@ -184,7 +184,7 @@ export const exampleForm: DynamicForm = {
         {
           type: 'numeric',
           id: 'docAmount',
-          label: 'Documents to store'
+          label: 'Documents to store',
         },
         {
           type: 'checkbox',
@@ -193,7 +193,7 @@ export const exampleForm: DynamicForm = {
           showIf: {
             controlId: 'docAmount',
             comparer: 'lt',
-            compareValue: 1000
+            compareValue: 1000,
           },
         },
         {
@@ -204,14 +204,14 @@ export const exampleForm: DynamicForm = {
             {
               id: 'simple-text',
               label: 'Simple Text Files',
-              value: 'text-raw'
+              value: 'text-raw',
             },
             {
               id: 'markdown-text',
               label: 'Markdown Files',
-              value: 'text-markdown'
-            }
-          ]
+              value: 'text-markdown',
+            },
+          ],
         },
         {
           type: 'dropdown',
@@ -221,46 +221,45 @@ export const exampleForm: DynamicForm = {
             {
               id: 'on-the-fly',
               label: 'On the fly',
-              value: 'otf'
+              value: 'otf',
             },
             {
               id: 'sprint',
               label: 'Sprint',
-              value: 'spr'
+              value: 'spr',
             },
             {
               id: 'cycle',
               label: 'Cycle',
-              value: 'cyc'
+              value: 'cyc',
             },
             {
               id: 'planned',
               label: 'Planned',
-              value: 'pla'
-            }
-          ]
+              value: 'pla',
+            },
+          ],
         },
         {
           type: 'numeric',
           id: 'frequency',
           label: 'Frequency (Sprint / Cycle Duration)',
           resetValueIfHidden: true,
-          showIf:
-            {
-              controlId: 'docAmount',
-              comparer: 'lt',
-              compareValue: 2000,
-              and: {
+          showIf: {
+            controlId: 'docAmount',
+            comparer: 'lt',
+            compareValue: 2000,
+            and: {
+              controlId: 'docFrequency',
+              comparer: 'eq',
+              compareValue: 'spr',
+              or: {
                 controlId: 'docFrequency',
                 comparer: 'eq',
-                compareValue: 'spr',
-                or: {
-                  controlId: 'docFrequency',
-                  comparer: 'eq',
-                  compareValue: 'cyc'
-                }
-              }
+                compareValue: 'cyc',
+              },
             },
+          },
         },
         {
           type: 'text',
@@ -268,7 +267,7 @@ export const exampleForm: DynamicForm = {
           label: 'Alternative Company Name',
           showIf: {
             controlId: 'company',
-            comparer: 'empty'
+            comparer: 'empty',
           },
         },
         {
@@ -278,7 +277,7 @@ export const exampleForm: DynamicForm = {
           showIf: {
             controlId: 'username',
             comparer: 'eqOrEmpty',
-            compareValue: 'none'
+            compareValue: 'none',
           },
         },
         {
@@ -293,8 +292,8 @@ export const exampleForm: DynamicForm = {
               showIf: {
                 controlId: 'frequency',
                 comparer: 'eq',
-                compareValue: 1
-              }
+                compareValue: 1,
+              },
             },
             {
               type: 'text',
@@ -303,10 +302,10 @@ export const exampleForm: DynamicForm = {
               showIf: {
                 controlId: 'repositories',
                 comparer: 'lt',
-                compareValue: '1'
-              }
-            }
-          ]
+                compareValue: '1',
+              },
+            },
+          ],
         },
         {
           type: 'nested-group',
@@ -318,13 +317,13 @@ export const exampleForm: DynamicForm = {
           type: 'nested-group',
           id: 'group-3-3',
           content: [],
-        }
+        },
       ],
       showIf: {
         controlId: 'group-2.repoTemplate',
         comparer: 'eq',
-        compareValue: 'doc'
+        compareValue: 'doc',
       },
-    }
-  ]
-};
+    },
+  ],
+}

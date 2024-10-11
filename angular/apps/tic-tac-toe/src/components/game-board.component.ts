@@ -1,6 +1,6 @@
-import { Component, inject, output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { GameService } from '../services/game.service';
+import { Component, inject, output } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { GameService } from '../services/game.service'
 
 @Component({
   selector: 'app-game-board',
@@ -26,11 +26,11 @@ import { GameService } from '../services/game.service';
   </ol>`,
 })
 export class GameBoardComponent {
-  private gameService = inject(GameService);
-  board = this.gameService.state.gameBoard;
-  selectSquare = output<{ rowIndex: number; colIndex: number }>();
+  private gameService = inject(GameService)
+  board = this.gameService.state.gameBoard
+  selectSquare = output<{ rowIndex: number; colIndex: number }>()
 
   onSelectSquare(rowIndex: number, colIndex: number) {
-    this.gameService.state.selectSquare({ rowIndex, colIndex });
+    this.gameService.state.selectSquare({ rowIndex, colIndex })
   }
 }

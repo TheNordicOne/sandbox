@@ -1,3 +1,3 @@
-export * from './lib/lib.routes';
+export * from './lib/lib.routes'
 
-export * from './lib/forms/forms.component';
+export * from './lib/forms/forms.component'

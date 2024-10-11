@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { GameService } from '../services/game.service';
+import { Component, inject } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { GameService } from '../services/game.service'
 
 @Component({
   selector: 'app-log',
@@ -17,6 +17,6 @@ import { GameService } from '../services/game.service';
   </ol>`,
 })
 export class LogComponent {
-  private gameService = inject(GameService);
-  turns = this.gameService.state.turns;
+  private gameService = inject(GameService)
+  turns = this.gameService.state.turns
 }

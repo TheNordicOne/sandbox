@@ -1,17 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { viewProviders } from '../../helper';
-import { BaseControlComponent } from './base-control.component';
-import { TextControl } from '../../dynamic-form.type';
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { ReactiveFormsModule } from '@angular/forms'
+import { viewProviders } from '../../helper'
+import { BaseControlComponent } from './base-control.component'
+import { TextControl } from '../../dynamic-form.type'
 
 @Component({
   selector: 'sbf-dynamic-text-control',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, ReactiveFormsModule],
   template: `
     @if (isVisible()) {
       <div class="form-row">
@@ -21,7 +18,6 @@ import { TextControl } from '../../dynamic-form.type';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders
+  viewProviders,
 })
-export class TextControlComponent extends BaseControlComponent<TextControl> {
-}
+export class TextControlComponent extends BaseControlComponent<TextControl> {}

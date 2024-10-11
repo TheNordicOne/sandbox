@@ -6,11 +6,11 @@ import {
   model,
   OnInit,
   signal,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { GameService } from '../services/game.service';
-import { Player } from '../types/game.types';
+} from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { FormsModule } from '@angular/forms'
+import { GameService } from '../services/game.service'
+import { Player } from '../types/game.types'
 
 @Component({
   selector: '[app-player]',
@@ -33,27 +33,27 @@ import { Player } from '../types/game.types';
   },
 })
 export class PlayerComponent implements OnInit {
-  private gameService = inject(GameService);
+  private gameService = inject(GameService)
 
-  player = input.required<Player>();
+  player = input.required<Player>()
 
-  symbol = computed(() => this.player().symbol);
+  symbol = computed(() => this.player().symbol)
   isActive = computed(
     () => this.gameService.state.activePlayer().symbol === this.symbol(),
-  );
+  )
 
-  isEditing = signal(false);
-  playerName = model('');
+  isEditing = signal(false)
+  playerName = model('')
 
   ngOnInit() {
-    this.playerName.set(this.player().name);
+    this.playerName.set(this.player().name)
   }
 
   onEditSaveClick() {
-    this.isEditing.update((editing) => !editing);
+    this.isEditing.update((editing) => !editing)
 
     if (!this.isEditing()) {
-      this.onPlayerChangeName();
+      this.onPlayerChangeName()
     }
   }
 
@@ -61,6 +61,6 @@ export class PlayerComponent implements OnInit {
     this.gameService.state.changePlayerName({
       symbol: this.symbol(),
       newName: this.playerName(),
-    });
+    })
   }
 }

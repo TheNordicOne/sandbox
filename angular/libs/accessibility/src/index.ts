@@ -1,3 +1,3 @@
-export * from './lib/lib.routes';
+export * from './lib/lib.routes'
 
-export * from './lib/accessibility/accessibility.component';
+export * from './lib/accessibility/accessibility.component'
