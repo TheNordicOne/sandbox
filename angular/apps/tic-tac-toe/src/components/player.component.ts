@@ -1,6 +1,15 @@
-import { Component, input, model, OnInit, output, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  model,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: '[app-player]',
@@ -23,10 +32,12 @@ import { FormsModule } from '@angular/forms';
   },
 })
 export class PlayerComponent implements OnInit {
+  private gameService = inject(GameService);
+
   initialName = input.required<string>();
   symbol = input.required<string>();
-  isActive = input.required<boolean>();
-  changeName = output<{ symbol: string; newName: string }>();
+
+  isActive = computed(() => this.gameService.activePlayer() === this.symbol());
 
   isEditing = signal(false);
   playerName = model('');
@@ -39,10 +50,11 @@ export class PlayerComponent implements OnInit {
     this.isEditing.update((editing) => !editing);
 
     if (!this.isEditing()) {
-      this.changeName.emit({
-        symbol: this.symbol(),
-        newName: this.playerName(),
-      });
+      this.onPlayerChangeName();
     }
+  }
+
+  onPlayerChangeName() {
+    this.gameService.onPlayerChangeName(this.symbol(), this.playerName());
   }
 }

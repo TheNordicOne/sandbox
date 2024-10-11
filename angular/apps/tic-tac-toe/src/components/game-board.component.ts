@@ -1,23 +1,19 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GameBoard } from '../types/game.types';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-game-board',
   standalone: true,
   imports: [CommonModule],
   template: ` <ol id="game-board">
-    @for (row of board(); track row; let rowIndex = $index) {
+    @for (row of board(); track rowIndex; let rowIndex = $index) {
       <li>
         <ol>
-          @for (
-            playerSymbol of row;
-            track playerSymbol;
-            let colIndex = $index
-          ) {
+          @for (playerSymbol of row; track colIndex; let colIndex = $index) {
             <li>
               <button
-                (click)="selectSquare.emit({ rowIndex, colIndex })"
+                (click)="onSelectSquare(rowIndex, colIndex)"
                 [disabled]="playerSymbol !== null"
               >
                 {{ playerSymbol }}
@@ -30,6 +26,11 @@ import { GameBoard } from '../types/game.types';
   </ol>`,
 })
 export class GameBoardComponent {
-  board = input.required<GameBoard>();
+  private gameService = inject(GameService);
+  board = this.gameService.gameBoard;
   selectSquare = output<{ rowIndex: number; colIndex: number }>();
+
+  onSelectSquare(rowIndex: number, colIndex: number) {
+    this.gameService.onSelectSquare(rowIndex, colIndex);
+  }
 }

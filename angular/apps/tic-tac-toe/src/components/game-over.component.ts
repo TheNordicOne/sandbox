@@ -1,24 +1,34 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-game-over',
   standalone: true,
   imports: [CommonModule],
-  template: ` <div id="game-over">
-    <h2>Game Over!</h2>
-    @if (winner()) {
-      <p>{{ winner() }} won!</p>
+  template: `
+    @if (winner() || hasDraw()) {
+      <div id="game-over">
+        <h2>Game Over!</h2>
+        @if (winner()) {
+          <p>{{ winner() }} won!</p>
+        }
+        @if (!winner()) {
+          <p>It&apos;s a draw!</p>
+        }
+        <p>
+          <button (click)="onRestart()">Rematch!</button>
+        </p>
+      </div>
     }
-    @if (!winner()) {
-      <p>It&apos;s a draw!</p>
-    }
-    <p>
-      <button (click)="restart.emit()">Rematch!</button>
-    </p>
-  </div>`,
+  `,
 })
 export class GameOverComponent {
-  winner = input<string | null>(null);
-  restart = output();
+  private gameService = inject(GameService);
+  winner = this.gameService.winner;
+  hasDraw = this.gameService.hasDraw;
+
+  onRestart() {
+    this.gameService.onRestart();
+  }
 }

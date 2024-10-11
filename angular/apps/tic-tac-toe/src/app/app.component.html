@@ -1,28 +1,11 @@
 <main>
   <div id="game-container">
     <ol id="players" class="highlight-player">
-      <li
-        app-player
-        [initialName]="PLAYERS['X']"
-        symbol="X"
-        [isActive]="activePlayer() === 'X'"
-        (changeName)="onPlayerChangeName($event)"
-      ></li>
-      <li
-        app-player
-        [initialName]="PLAYERS['O']"
-        symbol="O"
-        [isActive]="activePlayer() === 'O'"
-        (changeName)="onPlayerChangeName($event)"
-      ></li>
+      <li app-player [initialName]="PLAYERS['X']" symbol="X"></li>
+      <li app-player [initialName]="PLAYERS['O']" symbol="O"></li>
     </ol>
-    @if (winner() || hasDraw()) {
-      <app-game-over [winner]="winner()" (restart)="onRestart()" />
-    }
-    <app-game-board
-      (selectSquare)="onSelectSquare($event)"
-      [board]="gameBoard()"
-    />
+    <app-game-over />
+    <app-game-board />
   </div>
-  <app-log [turns]="gameTurns()" />
+  <app-log />
 </main>
