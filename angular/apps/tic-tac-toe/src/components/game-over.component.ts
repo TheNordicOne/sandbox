@@ -25,10 +25,10 @@ import { GameService } from '../services/game.service';
 })
 export class GameOverComponent {
   private gameService = inject(GameService);
-  winner = this.gameService.winner;
-  hasDraw = this.gameService.hasDraw;
+  winner = this.gameService.state.winner;
+  hasDraw = this.gameService.state.hasDraw;
 
   onRestart() {
-    this.gameService.onRestart();
+    this.gameService.state.restart();
   }
 }

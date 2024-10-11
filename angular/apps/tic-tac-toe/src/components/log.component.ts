@@ -18,5 +18,5 @@ import { GameService } from '../services/game.service';
 })
 export class LogComponent {
   private gameService = inject(GameService);
-  turns = this.gameService.gameTurns;
+  turns = this.gameService.state.turns;
 }

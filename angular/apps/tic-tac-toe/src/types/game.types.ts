@@ -24,3 +24,8 @@ export type Player = {
 export type PlayerRecord = {
   [K in PlayerSymbol]: { symbol: K; name: string };
 };
+
+export type GameState = {
+  turns: GameTurn[];
+  players: PlayerRecord;
+};

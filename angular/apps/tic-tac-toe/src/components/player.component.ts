@@ -39,7 +39,7 @@ export class PlayerComponent implements OnInit {
 
   symbol = computed(() => this.player().symbol);
   isActive = computed(
-    () => this.gameService.activePlayer().symbol === this.symbol(),
+    () => this.gameService.state.activePlayer().symbol === this.symbol(),
   );
 
   isEditing = signal(false);
@@ -58,6 +58,9 @@ export class PlayerComponent implements OnInit {
   }
 
   onPlayerChangeName() {
-    this.gameService.onPlayerChangeName(this.symbol(), this.playerName());
+    this.gameService.state.changePlayerName({
+      symbol: this.symbol(),
+      newName: this.playerName(),
+    });
   }
 }

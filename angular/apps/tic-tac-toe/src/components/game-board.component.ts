@@ -27,10 +27,10 @@ import { GameService } from '../services/game.service';
 })
 export class GameBoardComponent {
   private gameService = inject(GameService);
-  board = this.gameService.gameBoard;
+  board = this.gameService.state.gameBoard;
   selectSquare = output<{ rowIndex: number; colIndex: number }>();
 
   onSelectSquare(rowIndex: number, colIndex: number) {
-    this.gameService.onSelectSquare(rowIndex, colIndex);
+    this.gameService.state.selectSquare({ rowIndex, colIndex });
   }
 }
