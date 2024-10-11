@@ -1,6 +1,6 @@
 export type GameTurn = {
   square: Square;
-  player: string;
+  player: Player;
 };
 
 export type Square = {
@@ -9,7 +9,18 @@ export type Square = {
 };
 
 export type GameBoard = [
-  [string | null, string | null, string | null],
-  [string | null, string | null, string | null],
-  [string | null, string | null, string | null],
+  [PlayerSymbol | null, PlayerSymbol | null, PlayerSymbol | null],
+  [PlayerSymbol | null, PlayerSymbol | null, PlayerSymbol | null],
+  [PlayerSymbol | null, PlayerSymbol | null, PlayerSymbol | null],
 ];
+
+export type PlayerSymbol = 'X' | 'O';
+
+export type Player = {
+  symbol: PlayerSymbol;
+  name: string;
+};
+
+export type PlayerRecord = {
+  [K in PlayerSymbol]: { symbol: K; name: string };
+};

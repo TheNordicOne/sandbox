@@ -10,6 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GameService } from '../services/game.service';
+import { Player } from '../types/game.types';
 
 @Component({
   selector: '[app-player]',
@@ -34,16 +35,18 @@ import { GameService } from '../services/game.service';
 export class PlayerComponent implements OnInit {
   private gameService = inject(GameService);
 
-  initialName = input.required<string>();
-  symbol = input.required<string>();
+  player = input.required<Player>();
 
-  isActive = computed(() => this.gameService.activePlayer() === this.symbol());
+  symbol = computed(() => this.player().symbol);
+  isActive = computed(
+    () => this.gameService.activePlayer().symbol === this.symbol(),
+  );
 
   isEditing = signal(false);
   playerName = model('');
 
   ngOnInit() {
-    this.playerName.set(this.initialName());
+    this.playerName.set(this.player().name);
   }
 
   onEditSaveClick() {

@@ -9,7 +9,9 @@ import { GameService } from '../services/game.service';
   template: ` <ol id="log">
     @for (turn of turns(); track turn) {
       <li>
-        {{ turn.player }} selected {{ turn.square.row }},{{ turn.square.col }}
+        {{ turn.player.name }} selected {{ turn.square.row }},{{
+          turn.square.col
+        }}
       </li>
     }
   </ol>`,

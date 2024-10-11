@@ -1,8 +1,8 @@
 <main>
   <div id="game-container">
     <ol id="players" class="highlight-player">
-      <li app-player [initialName]="PLAYERS['X']" symbol="X"></li>
-      <li app-player [initialName]="PLAYERS['O']" symbol="O"></li>
+      <li app-player [player]="PLAYERS['X']"></li>
+      <li app-player [player]="PLAYERS['O']"></li>
     </ol>
     <app-game-over />
     <app-game-board />

@@ -1,5 +1,5 @@
 import { computed, Injectable, signal, untracked } from '@angular/core';
-import { GameBoard, GameTurn } from '../types/game.types';
+import { GameBoard, GameTurn, Player, PlayerSymbol } from '../types/game.types';
 import { INITIAL_GAME_BOARD, PLAYERS } from '../helper/game.constants';
 import { WINNING_COMBINATIONS } from '../helper/winning-combinations.constants';
 
@@ -7,16 +7,18 @@ import { WINNING_COMBINATIONS } from '../helper/winning-combinations.constants';
   providedIn: 'root',
 })
 export class GameService {
-  players = signal({ ...PLAYERS });
+  players = signal({ ...structuredClone(PLAYERS) });
   gameTurns = signal<GameTurn[]>([]);
 
   activePlayer = computed(() => {
-    let currentPlayer = 'X';
-    if (this.gameTurns().length > 0 && this.gameTurns()[0].player === 'X') {
-      currentPlayer = 'O';
+    if (
+      this.gameTurns().length > 0 &&
+      this.gameTurns()[0].player.symbol === 'X'
+    ) {
+      return this.players()['O'];
     }
 
-    return currentPlayer;
+    return this.players()['X'];
   });
 
   gameBoard = computed(() => {
@@ -28,14 +30,14 @@ export class GameService {
       const { square, player } = turn;
       const { row, col } = square;
 
-      gameBoard[row][col] = player;
+      gameBoard[row][col] = player.symbol;
     }
 
     return gameBoard;
   });
 
-  winner = computed(() => {
-    let winner;
+  winner = computed<Player | null>(() => {
+    let winner: Player | null = null;
     const gameBoard = this.gameBoard();
 
     for (const combination of WINNING_COMBINATIONS) {
@@ -58,18 +60,19 @@ export class GameService {
       }
     }
 
-    return winner ?? null;
+    return winner;
   });
 
   hasDraw = computed(() => {
     return this.gameTurns().length === 9 && untracked(() => !this.winner());
   });
 
-  onPlayerChangeName(symbol: string, newName: string) {
+  onPlayerChangeName(symbol: PlayerSymbol, newName: string) {
     this.players.update((players) => {
+      const updatedPlayers = structuredClone(players);
       return {
-        ...players,
-        [symbol]: newName,
+        ...updatedPlayers,
+        [symbol]: { ...players[symbol], name: newName },
       };
     });
   }
