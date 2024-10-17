@@ -1,7 +1,7 @@
-import { ControlContainer } from '@angular/forms'
 import { inject } from '@angular/core'
-import { COMPARER, Comparer, Condition } from './dynamic-form.type'
+import { ControlContainer } from '@angular/forms'
 import { asserUnreachable } from '@sandbox/utils'
+import { COMPARER, Comparer, Condition } from './dynamic-form.type'
 
 export const viewProviders = [
   {
@@ -93,8 +93,8 @@ function accessNestedObject(value: unknown, path: string | string[]): unknown {
     path = path.split('.')
   }
 
-  // @ts-expect-error: Which values are available is only known at runtime
   return path.reduce(
+    // @ts-expect-error: Which values are available is only known at runtime
     (acc, key) => (acc && acc[key] !== 'undefined' ? acc[key] : undefined),
     value,
   )
