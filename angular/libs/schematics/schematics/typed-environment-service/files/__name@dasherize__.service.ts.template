@@ -1,0 +1,10 @@
+import { EnvironmentKey, EnvironmentValueType } from './environment.types'
+
+@Injectable({
+  providedIn: 'root',
+})
+export class <%= classify(name) %>Service {
+  public get<K extends EnvironmentKey>(key: K): EnvironmentValueType<K> {
+    return environment[key];
+  }
+}

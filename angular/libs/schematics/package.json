@@ -5,5 +5,8 @@
     "@angular/common": "^18.2.0",
     "@angular/core": "^18.2.0"
   },
+  "publishConfig": {
+    "registry": "http://localhost:4873/"
+  },
   "sideEffects": false
 }
