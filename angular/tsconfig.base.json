@@ -19,7 +19,8 @@
       "@angular/accessibility": ["libs/accessibility/src/index.ts"],
       "@sandbox/utils": ["libs/shared/util/src/index.ts"],
       "sandbox-accessibility": ["libs/accessibility/src/index.ts"],
-      "sandbox-forms": ["libs/forms/src/index.ts"]
+      "sandbox-forms": ["libs/forms/src/index.ts"],
+      "sandbox-infrastructure": ["libs/infrastructure/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
