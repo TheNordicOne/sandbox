@@ -28,6 +28,11 @@
       "options": {
         "jestConfig": "libs/schematics/jest.config.ts"
       }
+    },
+    "nx-release-publish": {
+      "options": {
+        "registry": "http://localhost:4873/"
+      }
     }
   }
 }

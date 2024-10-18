@@ -1,12 +1,10 @@
 {
   "name": "sandbox-schematics",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "peerDependencies": {
     "@angular/common": "^18.2.0",
     "@angular/core": "^18.2.0"
   },
-  "publishConfig": {
-    "registry": "http://localhost:4873/"
-  },
+  "schematics": "./schematics/collection.json",
   "sideEffects": false
 }
