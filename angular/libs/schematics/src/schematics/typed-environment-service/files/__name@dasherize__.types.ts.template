@@ -1,3 +1,0 @@
-
-export type EnvironmentKey = keyof <%= environmentInterfaceName %>;
-export type EnvironmentValueType<K extends EnvironmentKey> = <%= environmentInterfaceName %>[K];

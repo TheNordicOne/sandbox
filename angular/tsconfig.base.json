@@ -11,18 +11,33 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular/accessibility": ["libs/accessibility/src/index.ts"],
-      "@sandbox/utils": ["libs/shared/util/src/index.ts"],
-      "sandbox-accessibility": ["libs/accessibility/src/index.ts"],
-      "sandbox-forms": ["libs/forms/src/index.ts"],
-      "sandbox-infrastructure": ["libs/infrastructure/src/index.ts"],
-      "sandbox-schematics": ["libs/schematics/src/index.ts"]
+      "@angular/accessibility": [
+        "libs/accessibility/src/index.ts"
+      ],
+      "@sandbox/utils": [
+        "libs/shared/util/src/index.ts"
+      ],
+      "sandbox-accessibility": [
+        "libs/accessibility/src/index.ts"
+      ],
+      "sandbox-forms": [
+        "libs/forms/src/index.ts"
+      ],
+      "sandbox-infrastructure": [
+        "libs/infrastructure/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
