@@ -1,1 +1,1 @@
-export * from './typed-environment-service/index'
+export * from './schematics'
