@@ -1,7 +1,4 @@
 # schematics
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test schematics` to execute the unit tests.
+The code in this library is accurate, even if not complete.
+Just can't get it to actually work with NX
