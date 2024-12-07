@@ -1,20 +1,14 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-  Type,
-} from '@angular/core'
-import { CommonModule, NgComponentOutlet } from '@angular/common'
-import { ReactiveFormsModule } from '@angular/forms'
-import { viewProviders } from '../../helper'
-import { CheckboxControlComponent } from './dynamic-checkbox-control.component'
-import { DynamicControl, DynamicFormGroup } from '../../dynamic-form.type'
-import { DynamicFormGroupComponent } from '../dynamic-form-group/dynamic-form-group.component'
-import { TextControlComponent } from './dynamic-text-control.component'
-import { NumericControlComponent } from './dynamic-numeric-control.component'
-import { RadioControlComponent } from './dynamic-radio-control.component'
-import { DropdownControlComponent } from './dynamic-dropdown-control.component'
+import { ChangeDetectionStrategy, Component, input, OnInit, Type } from '@angular/core';
+import { CommonModule, NgComponentOutlet } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { viewProviders } from '../../helper';
+import { CheckboxControlComponent } from './dynamic-checkbox-control.component';
+import { DynamicControl, DynamicFormGroup } from '../../dynamic-form.type';
+import { DynamicFormGroupComponent } from '../dynamic-form-group/dynamic-form-group.component';
+import { TextControlComponent } from './dynamic-text-control.component';
+import { NumericControlComponent } from './dynamic-numeric-control.component';
+import { RadioControlComponent } from './dynamic-radio-control.component';
+import { DropdownControlComponent } from './dynamic-dropdown-control.component';
 
 @Component({
   selector: 'sbf-content-host',
@@ -27,7 +21,7 @@ import { DropdownControlComponent } from './dynamic-dropdown-control.component'
   viewProviders
 })
 export class ContentHostComponent implements OnInit {
-  @Input({ required: true }) content!: DynamicControl | DynamicFormGroup
+  content = input.required<DynamicControl | DynamicFormGroup>();
 
   public component: Type<unknown> | null = null
   public componentInputs: Record<string, unknown> | undefined
@@ -39,11 +33,11 @@ export class ContentHostComponent implements OnInit {
   private loadControls() {
     this.component = null
 
-    switch (this.content.type) {
+    switch (this.content().type) {
       case 'flat-group':
       case 'nested-group':
         this.component = DynamicFormGroupComponent
-        this.componentInputs = { group: this.content }
+        this.componentInputs = { group: this.content() };
         return
       case 'text':
         this.component = TextControlComponent
@@ -65,6 +59,6 @@ export class ContentHostComponent implements OnInit {
       return
     }
 
-    this.componentInputs = { control: this.content }
+    this.componentInputs = { control: this.content() };
   }
 }
