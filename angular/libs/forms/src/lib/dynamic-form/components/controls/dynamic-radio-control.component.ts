@@ -11,11 +11,11 @@ import { Option, RadioControl } from '../../dynamic-form.type';
   template: `
     @if (isVisible()) {
       <div class="form-row">
-        <label [htmlFor]="control.id">{{ control.label }}</label>
+        <label [htmlFor]="control().id">{{ control().label }}</label>
         <div>
           @for (option of options(); track option) {
             <input [attr.e2e-id]="e2eId() + '-' + option.id" type="radio" [id]="option.id" [value]="option.value"
-                   [name]="control.id" />
+                   [name]="control().id" />
             <label [htmlFor]="option.id">{{ option.label }}</label>
           }
         </div>
@@ -32,6 +32,6 @@ export class RadioControlComponent
 
   override ngOnInit() {
     super.ngOnInit()
-    this.options.set(this.control.options)
+    this.options.set(this.control().options);
   }
 }

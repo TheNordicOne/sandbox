@@ -1,23 +1,18 @@
-import { DynamicControl } from '../../dynamic-form.type'
+import { DynamicControl } from '../../dynamic-form.type';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
   effect,
   inject,
-  Input,
+  input,
   OnDestroy,
   OnInit,
-  signal,
-} from '@angular/core'
-import {
-  ControlContainer,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms'
-import { shouldBeShown, viewProviders } from '../../helper'
-import { DynamicFormService } from '../../dynamic-form.service'
+  signal
+} from '@angular/core';
+import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
+import { shouldBeShown, viewProviders } from '../../helper';
+import { DynamicFormService } from '../../dynamic-form.service';
 
 @Component({
   selector: 'sbf-base-control',
@@ -26,10 +21,9 @@ import { DynamicFormService } from '../../dynamic-form.service'
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders
 })
-export class BaseControlComponent<T extends DynamicControl>
-  implements OnInit, OnDestroy
+export class BaseControlComponent<T extends DynamicControl> implements OnInit, OnDestroy
 {
-  @Input({ required: true }) control!: T
+  control = input.required<T>();
 
   private parentContainer = inject(ControlContainer)
   private dynamicFormService = inject(DynamicFormService)
@@ -37,10 +31,10 @@ export class BaseControlComponent<T extends DynamicControl>
   public e2eId = signal('')
   public isVisible = computed(() => {
     const value = this.dynamicFormService.formValue()
-    if (!this.control.showIf || value === null) {
+    if (!this.control().showIf || value === null) {
       return true
     }
-    return shouldBeShown(this.control.showIf, value)
+    return shouldBeShown(this.control().showIf, value);
   })
 
   get parentFormGroup() {
@@ -50,19 +44,19 @@ export class BaseControlComponent<T extends DynamicControl>
   constructor() {
     effect(() => {
       const isVisible = this.isVisible()
-      const formControl = this.parentFormGroup?.get(this.control.id)
+      const formControl = this.parentFormGroup?.get(this.control().id);
       if (!formControl) {
         return
       }
-      if (isVisible || this.control.keepAttachedIfHidden) {
-        if (this.control.resetValueIfHidden) {
+      if (isVisible || this.control().keepAttachedIfHidden) {
+        if (this.control().resetValueIfHidden) {
           formControl.reset()
         }
         formControl.enable({ emitEvent: false })
         return
       }
       formControl.disable({ emitEvent: false })
-      if (this.control.resetValueIfHidden) {
+      if (this.control().resetValueIfHidden) {
         formControl.reset()
       }
     })
@@ -71,25 +65,25 @@ export class BaseControlComponent<T extends DynamicControl>
   ngOnInit(): void {
     const initialValue = this.getInitialValue()
     const formControl = new FormControl(initialValue)
-    if (this.control.required) {
+    if (this.control().required) {
       formControl.addValidators(Validators.required)
     }
 
-    this.parentFormGroup.addControl(this.control.id, formControl, {
+    this.parentFormGroup.addControl(this.control().id, formControl, {
       emitEvent: false,
     })
-    this.e2eId.set(`dynamic-form-${this.control.id}-input`)
+    this.e2eId.set(`dynamic-form-${this.control().id}-input`);
   }
 
   ngOnDestroy(): void {
-    this.parentFormGroup?.removeControl(this.control.id)
+    this.parentFormGroup?.removeControl(this.control().id);
   }
 
   private getInitialValue() {
-    switch (this.control.type) {
+    switch (this.control().type) {
       // Handle different value types here
       default:
-        return this.control.value ?? this.control.default
+        return this.control().value ?? this.control().default;
     }
   }
 }

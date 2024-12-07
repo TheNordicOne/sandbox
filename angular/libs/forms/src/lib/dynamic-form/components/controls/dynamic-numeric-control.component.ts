@@ -11,8 +11,8 @@ import { NumericControl } from '../../dynamic-form.type';
   template: `
     @if (isVisible()) {
       <div class="form-row">
-        <label [htmlFor]="control.id">{{ control.label }}</label>
-        <input [attr.e2e-id]="e2eId()" type="number" [formControlName]="control.id">
+        <label [htmlFor]="control().id">{{ control().label }}</label>
+        <input [attr.e2e-id]="e2eId()" type="number" [formControlName]="control().id">
       </div>
     }
   `,
