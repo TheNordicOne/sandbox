@@ -28,8 +28,8 @@ export class BaseControlComponent<T extends DynamicControl> implements OnInit, O
   private parentContainer = inject(ControlContainer)
   private dynamicFormService = inject(DynamicFormService)
 
-  public e2eId = signal('')
-  public isVisible = computed(() => {
+  e2eId = signal('');
+  isVisible = computed(() => {
     const value = this.dynamicFormService.formValue()
     if (!this.control().showIf || value === null) {
       return true

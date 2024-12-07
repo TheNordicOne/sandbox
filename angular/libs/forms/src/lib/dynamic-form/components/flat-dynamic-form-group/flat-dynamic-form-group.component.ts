@@ -17,7 +17,7 @@ export class FlatDynamicFormGroupComponent {
 
   private dynamicFormService = inject(DynamicFormService)
 
-  public isVisible = computed(() => {
+  isVisible = computed(() => {
     const value = this.dynamicFormService.formValue()
     if (!this.group().showIf || value === null) {
       return true

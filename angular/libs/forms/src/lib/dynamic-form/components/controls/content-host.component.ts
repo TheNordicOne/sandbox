@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, OnInit, Type } from '@angular/core';
-import { CommonModule, NgComponentOutlet } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { viewProviders } from '../../helper';
 import { CheckboxControlComponent } from './dynamic-checkbox-control.component';
@@ -12,7 +12,7 @@ import { DropdownControlComponent } from './dynamic-dropdown-control.component';
 
 @Component({
   selector: 'sbf-content-host',
-  imports: [CommonModule, ReactiveFormsModule, NgComponentOutlet],
+  imports: [CommonModule, ReactiveFormsModule],
   template: `
     <ng-container [ngComponentOutlet]="component"
                   [ngComponentOutletInputs]="componentInputs" />
@@ -23,8 +23,8 @@ import { DropdownControlComponent } from './dynamic-dropdown-control.component';
 export class ContentHostComponent implements OnInit {
   content = input.required<DynamicControl | DynamicFormGroup>();
 
-  public component: Type<unknown> | null = null
-  public componentInputs: Record<string, unknown> | undefined
+  component: Type<unknown> | null = null;
+  componentInputs: Record<string, unknown> | undefined;
 
   ngOnInit(): void {
     this.loadControls()

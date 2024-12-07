@@ -26,7 +26,7 @@ export class DropdownControlComponent
   extends BaseControlComponent<DropdownControl>
   implements OnInit
 {
-  public options: WritableSignal<Option[]> = signal([])
+  options: WritableSignal<Option[]> = signal([]);
 
   override ngOnInit() {
     super.ngOnInit()

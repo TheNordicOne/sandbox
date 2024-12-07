@@ -28,7 +28,7 @@ export class RadioControlComponent
   extends BaseControlComponent<RadioControl>
   implements OnInit
 {
-  public options: WritableSignal<Option[]> = signal([])
+  options: WritableSignal<Option[]> = signal([]);
 
   override ngOnInit() {
     super.ngOnInit()

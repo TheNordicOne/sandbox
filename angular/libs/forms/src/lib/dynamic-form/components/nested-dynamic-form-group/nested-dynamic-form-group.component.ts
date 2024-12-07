@@ -19,7 +19,7 @@ export class NestedDynamicFormGroupComponent implements OnInit, OnDestroy {
   private parentContainer = inject(ControlContainer)
   private dynamicFormService = inject(DynamicFormService)
 
-  public isVisible = computed(() => {
+  isVisible = computed(() => {
     const value = this.dynamicFormService.formValue()
     if (!this.group().showIf || value === null) {
       return true
@@ -27,7 +27,7 @@ export class NestedDynamicFormGroupComponent implements OnInit, OnDestroy {
     return shouldBeShown(this.group().showIf, value);
   })
 
-  public isAttached = computed(
+  isAttached = computed(
     () => this.isVisible() || this.group().keepAttachedIfHidden
   )
 
