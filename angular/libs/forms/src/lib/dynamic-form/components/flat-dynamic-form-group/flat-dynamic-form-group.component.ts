@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentHostComponent } from '../controls/content-host.component';
 import { NestedDynamicFormGroup } from '../../dynamic-form.type';
@@ -13,14 +13,15 @@ import { shouldBeShown } from '../../helper';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FlatDynamicFormGroupComponent {
-  @Input({ required: true }) group!: NestedDynamicFormGroup
+  group = input.required<NestedDynamicFormGroup>();
+
   private dynamicFormService = inject(DynamicFormService)
 
   public isVisible = computed(() => {
     const value = this.dynamicFormService.formValue()
-    if (!this.group.showIf || value === null) {
+    if (!this.group().showIf || value === null) {
       return true
     }
-    return shouldBeShown(this.group.showIf, value)
+    return shouldBeShown(this.group().showIf, value);
   })
 }

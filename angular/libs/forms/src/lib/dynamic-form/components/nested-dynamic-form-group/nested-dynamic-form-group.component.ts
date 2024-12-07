@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentHostComponent } from '../controls/content-host.component';
 import { ControlContainer, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -14,21 +14,21 @@ import { NestedDynamicFormGroup } from '../../dynamic-form.type';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NestedDynamicFormGroupComponent implements OnInit, OnDestroy {
-  @Input({ required: true }) group!: NestedDynamicFormGroup
+  group = input.required<NestedDynamicFormGroup>();
 
   private parentContainer = inject(ControlContainer)
   private dynamicFormService = inject(DynamicFormService)
 
   public isVisible = computed(() => {
     const value = this.dynamicFormService.formValue()
-    if (!this.group.showIf || value === null) {
+    if (!this.group().showIf || value === null) {
       return true
     }
-    return shouldBeShown(this.group.showIf, value)
+    return shouldBeShown(this.group().showIf, value);
   })
 
   public isAttached = computed(
-    () => this.isVisible() || this.group.keepAttachedIfHidden,
+    () => this.isVisible() || this.group().keepAttachedIfHidden
   )
 
   get parentFormGroup() {
@@ -41,25 +41,25 @@ export class NestedDynamicFormGroupComponent implements OnInit, OnDestroy {
       if (!this.parentFormGroup) {
         return
       }
-      const formGroupStillExists = !!this.parentFormGroup.get(this.group.id)
+      const formGroupStillExists = !!this.parentFormGroup.get(this.group().id);
       if (isAttached && !formGroupStillExists) {
-        this.parentFormGroup.addControl(this.group.id, new FormGroup({}))
+        this.parentFormGroup.addControl(this.group().id, new FormGroup({}));
         return
       }
       if (isAttached) {
         return
       }
-      this.parentFormGroup.removeControl(this.group.id)
+      this.parentFormGroup.removeControl(this.group().id);
     })
   }
 
   ngOnInit(): void {
-    this.parentFormGroup.addControl(this.group.id, new FormGroup({}), {
+    this.parentFormGroup.addControl(this.group().id, new FormGroup({}), {
       emitEvent: false,
     })
   }
 
   ngOnDestroy() {
-    this.parentFormGroup?.removeControl(this.group.id)
+    this.parentFormGroup?.removeControl(this.group().id);
   }
 }

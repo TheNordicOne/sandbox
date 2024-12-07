@@ -1,9 +1,9 @@
 @if (isAttached()) {
   <ng-container [formGroup]="parentFormGroup">
     <fieldset [hidden]="!isVisible()">
-      <legend>{{ group.title ?? group.id }}</legend>
-      <div [attr.e2e-id]="group.id" e2e-data-content-type="group" [formGroupName]="group.id">
-        @for (control of group.content; track control) {
+      <legend>{{ group().title ?? group().id }}</legend>
+      <div [attr.e2e-id]="group().id" e2e-data-content-type="group" [formGroupName]="group().id">
+        @for (control of group().content; track control) {
           <sbf-content-host [content]="control" />
         }
       </div>
