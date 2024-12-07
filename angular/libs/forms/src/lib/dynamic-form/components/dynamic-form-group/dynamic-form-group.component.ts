@@ -5,16 +5,15 @@ import { FlatDynamicFormGroupComponent } from '../flat-dynamic-form-group/flat-d
 import { NestedDynamicFormGroupComponent } from '../nested-dynamic-form-group/nested-dynamic-form-group.component'
 
 @Component({
-  selector: 'sbf-dynamic-form-group',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FlatDynamicFormGroupComponent,
-    NestedDynamicFormGroupComponent,
-  ],
-  templateUrl: './dynamic-form-group.component.html',
-  styleUrl: './dynamic-form-group.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'sbf-dynamic-form-group',
+    imports: [
+        CommonModule,
+        FlatDynamicFormGroupComponent,
+        NestedDynamicFormGroupComponent
+    ],
+    templateUrl: './dynamic-form-group.component.html',
+    styleUrl: './dynamic-form-group.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DynamicFormGroupComponent {
   @Input({ required: true }) group!: DynamicFormGroup

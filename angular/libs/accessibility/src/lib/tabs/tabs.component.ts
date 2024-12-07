@@ -1,21 +1,12 @@
-import {
-  AfterViewInit,
-  Component,
-  contentChildren,
-  viewChildren,
-} from '@angular/core'
-import { NgClass } from '@angular/common'
-import { TabButtonIdPipe } from './pipes/tab-button-id.pipe'
-import { TabIndexPipe } from './pipes/tab-index.pipe'
-import { TabComponent } from './tab.component'
-import { FocusKeyManager } from '@angular/cdk/a11y'
-import { TabService } from './services/tab.service'
-import { TabPanelComponent } from './tab-panel.component'
+import { AfterViewInit, Component, contentChildren, viewChildren } from '@angular/core';
+import { TabComponent } from './tab.component';
+import { FocusKeyManager } from '@angular/cdk/a11y';
+import { TabService } from './services/tab.service';
+import { TabPanelComponent } from './tab-panel.component';
 
 @Component({
   selector: 'sba-tabs',
-  standalone: true,
-  imports: [NgClass, TabButtonIdPipe, TabIndexPipe, TabComponent],
+  imports: [TabComponent],
   template: `
     <div role="tablist" (keydown)="onKeydown($event)">
       @for (tab of tabPanels(); track tab; let i = $index) {
@@ -27,7 +18,7 @@ import { TabPanelComponent } from './tab-panel.component'
       <ng-content />
     </div>
   `,
-  providers: [TabService],
+  providers: [TabService]
 })
 export class TabsComponent implements AfterViewInit {
   tabs = viewChildren<TabComponent>(TabComponent)

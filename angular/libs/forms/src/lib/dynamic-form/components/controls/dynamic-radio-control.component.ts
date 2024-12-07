@@ -1,19 +1,12 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  signal,
-  WritableSignal,
-} from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { ReactiveFormsModule } from '@angular/forms'
-import { viewProviders } from '../../helper'
-import { BaseControlComponent } from './base-control.component'
-import { Option, RadioControl } from '../../dynamic-form.type'
+import { ChangeDetectionStrategy, Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { viewProviders } from '../../helper';
+import { BaseControlComponent } from './base-control.component';
+import { Option, RadioControl } from '../../dynamic-form.type';
 
 @Component({
   selector: 'sbf-dynamic-radio-control',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
     @if (isVisible()) {
@@ -29,7 +22,7 @@ import { Option, RadioControl } from '../../dynamic-form.type'
       </div>
     }`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders,
+  viewProviders
 })
 export class RadioControlComponent
   extends BaseControlComponent<RadioControl>

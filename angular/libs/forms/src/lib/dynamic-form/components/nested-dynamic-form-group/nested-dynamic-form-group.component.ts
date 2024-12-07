@@ -1,31 +1,17 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  effect,
-  inject,
-  Input,
-  OnDestroy,
-  OnInit,
-} from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { ContentHostComponent } from '../controls/content-host.component'
-import {
-  ControlContainer,
-  FormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms'
-import { DynamicFormService } from '../../dynamic-form.service'
-import { shouldBeShown } from '../../helper'
-import { NestedDynamicFormGroup } from '../../dynamic-form.type'
+import { ChangeDetectionStrategy, Component, computed, effect, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ContentHostComponent } from '../controls/content-host.component';
+import { ControlContainer, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { DynamicFormService } from '../../dynamic-form.service';
+import { shouldBeShown } from '../../helper';
+import { NestedDynamicFormGroup } from '../../dynamic-form.type';
 
 @Component({
   selector: 'sbf-nested-dynamic-form-group',
-  standalone: true,
   imports: [CommonModule, ContentHostComponent, ReactiveFormsModule],
   templateUrl: './nested-dynamic-form-group.component.html',
   styleUrl: './nested-dynamic-form-group.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NestedDynamicFormGroupComponent implements OnInit, OnDestroy {
   @Input({ required: true }) group!: NestedDynamicFormGroup

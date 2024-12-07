@@ -4,10 +4,9 @@ import { TabsComponent } from '../tabs/tabs.component'
 import { TabPanelComponent } from '../tabs/tab-panel.component'
 
 @Component({
-  selector: 'sba-accessibility',
-  standalone: true,
-  imports: [CommonModule, TabsComponent, TabPanelComponent],
-  templateUrl: './accessibility.component.html',
-  styleUrl: './accessibility.component.scss',
+    selector: 'sba-accessibility',
+    imports: [CommonModule, TabsComponent, TabPanelComponent],
+    templateUrl: './accessibility.component.html',
+    styleUrl: './accessibility.component.scss'
 })
 export class AccessibilityComponent {}

@@ -5,10 +5,9 @@ import { ENVIRONMENT_SERVICE } from '../../environments/environment.token'
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
+  styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   private environmentService = inject(ENVIRONMENT_SERVICE)

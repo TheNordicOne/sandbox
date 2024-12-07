@@ -1,12 +1,12 @@
-import { Component, inject } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { GameService } from '../services/game.service'
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-log',
-  standalone: true,
   imports: [CommonModule],
-  template: ` <ol id="log">
+  template: `
+    <ol id="log">
     @for (turn of turns(); track turn) {
       <li>
         {{ turn.player.name }} selected {{ turn.square.row }},{{
@@ -14,7 +14,7 @@ import { GameService } from '../services/game.service'
         }}
       </li>
     }
-  </ol>`,
+    </ol>`
 })
 export class LogComponent {
   private gameService = inject(GameService)

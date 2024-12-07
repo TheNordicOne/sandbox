@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { GameService } from '../services/game.service'
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-game-over',
-  standalone: true,
   imports: [CommonModule],
   template: `
     @if (winner() || hasDraw()) {
@@ -21,7 +20,7 @@ import { GameService } from '../services/game.service'
         </p>
       </div>
     }
-  `,
+  `
 })
 export class GameOverComponent {
   private gameService = inject(GameService)

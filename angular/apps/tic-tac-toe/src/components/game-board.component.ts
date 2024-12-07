@@ -1,12 +1,12 @@
-import { Component, inject, output } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { GameService } from '../services/game.service'
+import { Component, inject, output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-game-board',
-  standalone: true,
   imports: [CommonModule],
-  template: ` <ol id="game-board">
+  template: `
+    <ol id="game-board">
     @for (row of board(); track rowIndex; let rowIndex = $index) {
       <li>
         <ol>
@@ -23,7 +23,7 @@ import { GameService } from '../services/game.service'
         </ol>
       </li>
     }
-  </ol>`,
+    </ol>`
 })
 export class GameBoardComponent {
   private gameService = inject(GameService)

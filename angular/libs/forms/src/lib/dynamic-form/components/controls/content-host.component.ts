@@ -18,14 +18,13 @@ import { DropdownControlComponent } from './dynamic-dropdown-control.component'
 
 @Component({
   selector: 'sbf-content-host',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, NgComponentOutlet],
   template: `
     <ng-container [ngComponentOutlet]="component"
                   [ngComponentOutletInputs]="componentInputs" />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders,
+  viewProviders
 })
 export class ContentHostComponent implements OnInit {
   @Input({ required: true }) content!: DynamicControl | DynamicFormGroup

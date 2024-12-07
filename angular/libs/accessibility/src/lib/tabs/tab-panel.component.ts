@@ -1,11 +1,10 @@
-import { Component, computed, inject, input } from '@angular/core'
-import { TabButtonIdPipe } from './pipes/tab-button-id.pipe'
-import { TabService } from './services/tab.service'
-import { NgClass } from '@angular/common'
+import { Component, computed, inject, input } from '@angular/core';
+import { TabButtonIdPipe } from './pipes/tab-button-id.pipe';
+import { TabService } from './services/tab.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'sba-tab-panel',
-  standalone: true,
   imports: [TabButtonIdPipe, NgClass],
   template: `
     <div
@@ -18,7 +17,9 @@ import { NgClass } from '@angular/common'
       <ng-content />
     </div>
   `,
-  styles: `.hidden { display: none }`,
+  styles: `.hidden {
+      display: none
+  }`
 })
 export class TabPanelComponent {
   private tabService = inject(TabService)

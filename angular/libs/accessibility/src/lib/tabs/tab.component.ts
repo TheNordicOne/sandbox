@@ -1,23 +1,16 @@
-import {
-  Component,
-  computed,
-  ElementRef,
-  inject,
-  input,
-  viewChild,
-} from '@angular/core'
-import { FocusableOption } from '@angular/cdk/a11y'
-import { TabButtonIdPipe } from './pipes/tab-button-id.pipe'
-import { TabIndexPipe } from './pipes/tab-index.pipe'
-import { TabPanelComponent } from './tab-panel.component'
-import { TabService } from './services/tab.service'
-import { NgClass } from '@angular/common'
+import { Component, computed, ElementRef, inject, input, viewChild } from '@angular/core';
+import { FocusableOption } from '@angular/cdk/a11y';
+import { TabButtonIdPipe } from './pipes/tab-button-id.pipe';
+import { TabIndexPipe } from './pipes/tab-index.pipe';
+import { TabPanelComponent } from './tab-panel.component';
+import { TabService } from './services/tab.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'sba-tab',
-  standalone: true,
   imports: [TabButtonIdPipe, TabIndexPipe, NgClass],
-  template: ` <button
+  template: `
+    <button
     #tab
     [id]="tabKey() | tabButtonId"
     type="button"
@@ -35,7 +28,7 @@ import { NgClass } from '@angular/common'
         color: midnightblue;
         font-weight: 600;
     }
-  `,
+  `
 })
 export class TabComponent implements FocusableOption {
   private tabService = inject(TabService)

@@ -1,20 +1,11 @@
-import {
-  Component,
-  computed,
-  inject,
-  input,
-  model,
-  OnInit,
-  signal,
-} from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { FormsModule } from '@angular/forms'
-import { GameService } from '../services/game.service'
-import { Player } from '../types/game.types'
+import { Component, computed, inject, input, model, OnInit, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { GameService } from '../services/game.service';
+import { Player } from '../types/game.types';
 
 @Component({
   selector: '[app-player]',
-  standalone: true,
   imports: [CommonModule, FormsModule],
   template: ` <span class="player">
       @if (isEditing()) {
@@ -29,8 +20,8 @@ import { Player } from '../types/game.types'
     </button>`,
   styles: ``,
   host: {
-    '[class.active]': 'isActive()',
-  },
+    '[class.active]': 'isActive()'
+  }
 })
 export class PlayerComponent implements OnInit {
   private gameService = inject(GameService)

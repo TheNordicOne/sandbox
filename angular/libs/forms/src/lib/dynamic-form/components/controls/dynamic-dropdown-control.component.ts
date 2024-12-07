@@ -13,7 +13,6 @@ import { DropdownControl, Option } from '../../dynamic-form.type'
 
 @Component({
   selector: 'sbf-dynamic-dropdown-control',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
     @if (isVisible()) {
@@ -27,7 +26,7 @@ import { DropdownControl, Option } from '../../dynamic-form.type'
       </div>
     }`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders,
+  viewProviders
 })
 export class DropdownControlComponent
   extends BaseControlComponent<DropdownControl>

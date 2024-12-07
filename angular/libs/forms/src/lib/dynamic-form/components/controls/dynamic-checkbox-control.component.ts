@@ -7,7 +7,6 @@ import { CheckboxControl } from '../../dynamic-form.type'
 
 @Component({
   selector: 'sbf-dynamic-checkbox-control',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
     @if (isVisible()) {
@@ -18,6 +17,6 @@ import { CheckboxControl } from '../../dynamic-form.type'
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders,
+  viewProviders
 })
 export class CheckboxControlComponent extends BaseControlComponent<CheckboxControl> {}

@@ -13,12 +13,11 @@ import { DynamicFormService } from './dynamic-form.service'
 
 @Component({
   selector: 'sbf-dynamic-form',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, DynamicFormGroupComponent],
   templateUrl: './dynamic-form.component.html',
   styleUrl: './dynamic-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [DynamicFormService],
+  providers: [DynamicFormService]
 })
 export class DynamicFormComponent {
   private dynamicFormService = inject(DynamicFormService)

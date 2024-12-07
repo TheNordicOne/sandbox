@@ -6,16 +6,15 @@ import { LogComponent } from '../components/log.component'
 import { GameBoardComponent } from '../components/game-board.component'
 
 @Component({
-  standalone: true,
-  imports: [
-    PlayerComponent,
-    GameOverComponent,
-    LogComponent,
-    GameBoardComponent,
-  ],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+    imports: [
+        PlayerComponent,
+        GameOverComponent,
+        LogComponent,
+        GameBoardComponent
+    ],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
   protected readonly PLAYERS = PLAYERS

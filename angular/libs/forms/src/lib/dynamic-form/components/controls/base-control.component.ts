@@ -21,11 +21,10 @@ import { DynamicFormService } from '../../dynamic-form.service'
 
 @Component({
   selector: 'sbf-base-control',
-  standalone: true,
   imports: [],
   template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders,
+  viewProviders
 })
 export class BaseControlComponent<T extends DynamicControl>
   implements OnInit, OnDestroy
