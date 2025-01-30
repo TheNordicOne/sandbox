@@ -1,0 +1,8 @@
+@switch (group().type) {
+  @case ('flat-group') {
+    <sbf-flat-dynamic-form-group [group]="$any(group())" />
+  }
+  @case ('nested-group') {
+    <sbf-nested-dynamic-form-group [group]="$any(group())" />
+  }
+}

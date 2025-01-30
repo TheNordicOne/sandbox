@@ -1,0 +1,11 @@
+<main>
+  <div id="game-container">
+    <ol id="players" class="highlight-player">
+      <li app-player [player]="PLAYERS['X']"></li>
+      <li app-player [player]="PLAYERS['O']"></li>
+    </ol>
+    <app-game-over />
+    <app-game-board />
+  </div>
+  <app-log />
+</main>

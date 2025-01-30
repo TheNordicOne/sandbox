@@ -1,0 +1,16 @@
+<h2>Forms</h2>
+<div>
+  <form [formGroup]="form">
+    <fieldset>
+      <legend>Reusable Form Parts</legend>
+      <sbf-reusable-form-parts />
+    </fieldset>
+
+  </form>
+  <div>
+    <button (click)="logToConsole()">Log to console</button>
+  </div>
+</div>
+<div>
+  <sbf-dynamic-form [dynamicFormConfig]="exampleForm" />
+</div>

@@ -1,0 +1,8 @@
+<form [formGroup]="dynamicForm">
+  @for (group of groups(); track group.id) {
+    <sbf-dynamic-form-group [group]="group" />
+  }
+  <div>
+    <button (click)="logToConsole()">Log to console</button>
+  </div>
+</form>
