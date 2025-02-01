@@ -1,7 +1,7 @@
-import { inject } from '@angular/core'
-import { ControlContainer } from '@angular/forms'
-import { asserUnreachable } from 'shared'
-import { COMPARER, Comparer, Condition } from './dynamic-form.type'
+import { inject } from '@angular/core';
+import { ControlContainer } from '@angular/forms';
+import { assertUnreachable } from 'shared';
+import { COMPARER, Comparer, Condition } from './dynamic-form.type';
 
 export const viewProviders = [
   {
@@ -45,7 +45,7 @@ export function compareValues(
     case COMPARER.NOT_EMPTY:
       return !isEmpty(is)
     default:
-      asserUnreachable(comparer)
+      assertUnreachable(comparer);
       return false
   }
 }
