@@ -5,10 +5,10 @@ import { viewProviders } from '../../helper';
 import { CheckboxControlComponent } from './dynamic-checkbox-control.component';
 import { DynamicControl, DynamicFormGroup } from '../../dynamic-form.type';
 import { DynamicFormGroupComponent } from '../dynamic-form-group/dynamic-form-group.component';
-import { TextControlComponent } from './dynamic-text-control.component';
 import { NumericControlComponent } from './dynamic-numeric-control.component';
 import { RadioControlComponent } from './dynamic-radio-control.component';
 import { DropdownControlComponent } from './dynamic-dropdown-control.component';
+import { TextControlCompositeComponent } from './dynamic-text-control-composite.component';
 
 @Component({
   selector: 'sbf-content-host',
@@ -40,7 +40,7 @@ export class ContentHostComponent implements OnInit {
         this.componentInputs = { group: this.content() };
         return
       case 'text':
-        this.component = TextControlComponent
+        this.component = TextControlCompositeComponent;
         break
       case 'numeric':
         this.component = NumericControlComponent

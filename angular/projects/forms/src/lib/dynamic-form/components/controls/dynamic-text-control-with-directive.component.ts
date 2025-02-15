@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { viewProviders } from '../../helper';
 import { BaseControlDirective } from './base-control.directive';
+import { TextControl } from '../../dynamic-form.type';
 
 @Component({
     selector: 'sbf-dynamic-text-control-with-directive',
@@ -10,7 +11,7 @@ import { BaseControlDirective } from './base-control.directive';
     template: `
       @if (isVisible()) {
         <div class="form-row">
-          <label [htmlFor]="control().id">{{ control().label }}</label>
+          <label [htmlFor]="control().id">{{ control().label }} (Directive)</label>
           <input [attr.e2e-id]="e2eId()" type="text" [formControlName]="control().id">
         </div>
       }
@@ -26,7 +27,7 @@ import { BaseControlDirective } from './base-control.directive';
   }
 )
 export class TextControlWithDirectiveComponent {
-  private readonly baseControl = inject(BaseControlDirective);
+  private readonly baseControl = inject(BaseControlDirective<TextControl>);
 
   isVisible = this.baseControl.isVisible;
   control = this.baseControl.control;
