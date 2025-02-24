@@ -1,0 +1,23 @@
+---
+
+const { helpText } = Astro.props;
+---
+<p>Hello from Astro!!</p>
+
+<p id="help-text" style="display: none">{helpText}</p>
+
+<button id="toggle-btn">Toggle</button>
+
+
+<script>
+    const helpText = document.getElementById('help-text');
+    const toggleBtn = document.getElementById('toggle-btn');
+
+    toggleBtn?.addEventListener('click', () => {
+        if(!helpText){
+            return;
+        }
+        const isHidden = helpText.style.display === 'none';
+        helpText.style.display = isHidden ? 'block' : 'none';
+    });
+</script>
