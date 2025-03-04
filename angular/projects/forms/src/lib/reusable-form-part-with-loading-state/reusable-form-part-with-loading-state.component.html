@@ -1,0 +1,15 @@
+<div>
+  <div class="form-row">
+    <label [htmlFor]="'user-picker' + label()">{{label()}}</label>
+    @if (isLoading()) {
+      <span>Loading...</span>
+    } @else {
+      <select [id]="'user-picker' + label()" type="text" formControlName="user">
+        @for (user of users.value(); track user.id) {
+          <option [value]="user.username">{{ user.username }} ({{ user.firstName }} {{ user.lastName }})</option>
+        }
+      </select>
+    }
+  </div>
+</div>
+

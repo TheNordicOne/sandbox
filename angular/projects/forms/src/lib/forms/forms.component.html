@@ -5,7 +5,11 @@
       <legend>Reusable Form Parts</legend>
       <sbf-reusable-form-parts />
     </fieldset>
-
+    <fieldset>
+      <legend>Reusable Form Part with loading state</legend>
+      <sbf-reusable-form-part-with-loading-state filter="john" label="Johns" [delayInSeconds]="5" />
+      <sbf-reusable-form-part-with-loading-state filter="henry" label="Henrys" />
+    </fieldset>
   </form>
   <div>
     <button (click)="logToConsole()">Log to console</button>

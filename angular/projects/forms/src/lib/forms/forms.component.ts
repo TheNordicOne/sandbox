@@ -1,9 +1,12 @@
-import { Component, inject, ViewEncapsulation } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReusableFormPartsComponent } from '../reusable-form-parts/reusable-form-parts.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { DynamicFormComponent } from '../dynamic-form/dynamic-form.component';
-import { exampleForm } from '../dynamic-form/example-form';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ReusableFormPartsComponent} from '../reusable-form-parts/reusable-form-parts.component';
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import {DynamicFormComponent} from '../dynamic-form/dynamic-form.component';
+import {exampleForm} from '../dynamic-form/example-form';
+import {
+  ReusableFormPartWithLoadingStateComponent
+} from '../reusable-form-part-with-loading-state/reusable-form-part-with-loading-state.component';
 
 @Component({
   selector: 'sbf-forms',
@@ -11,11 +14,12 @@ import { exampleForm } from '../dynamic-form/example-form';
     CommonModule,
     ReusableFormPartsComponent,
     ReactiveFormsModule,
-    DynamicFormComponent
+    DynamicFormComponent,
+    ReusableFormPartWithLoadingStateComponent,
   ],
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class FormsComponent {
   private fb = inject(FormBuilder)
