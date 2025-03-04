@@ -1,11 +1,11 @@
 <div>
   <div class="form-row">
-    <label [htmlFor]="usernameControlKey">Username</label>
-    <input type="text" [formControlName]="usernameControlKey">
+    <label [htmlFor]="usernameControlKey()">Username</label>
+    <input type="text" [formControlName]="usernameControlKey()">
   </div>
 
   <div class="form-row">
-    <label [htmlFor]="passwordControlKey">Password</label>
-    <input type="text" [formControlName]="passwordControlKey">
+    <label [htmlFor]="passwordControlKey()">Password</label>
+    <input type="text" [formControlName]="passwordControlKey()">
   </div>
 </div>

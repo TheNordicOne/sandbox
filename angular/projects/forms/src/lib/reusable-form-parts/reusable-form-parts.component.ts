@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlContainer, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
@@ -15,8 +15,8 @@ import { ControlContainer, FormControl, FormGroup, ReactiveFormsModule } from '@
   ]
 })
 export class ReusableFormPartsComponent implements OnInit, OnDestroy {
-  @Input() usernameControlKey = 'username'
-  @Input() passwordControlKey = 'password'
+  readonly usernameControlKey = input('username');
+  readonly passwordControlKey = input('password');
 
   constructor(private parentContainer: ControlContainer) {}
 
@@ -26,17 +26,17 @@ export class ReusableFormPartsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.parentFormGroup.addControl(
-      this.usernameControlKey,
+      this.usernameControlKey(),
       new FormControl(''),
     )
     this.parentFormGroup.addControl(
-      this.passwordControlKey,
+      this.passwordControlKey(),
       new FormControl(''),
     )
   }
 
   ngOnDestroy(): void {
-    this.parentFormGroup.removeControl(this.usernameControlKey)
-    this.parentFormGroup.removeControl(this.passwordControlKey)
+    this.parentFormGroup.removeControl(this.usernameControlKey())
+    this.parentFormGroup.removeControl(this.passwordControlKey())
   }
 }
