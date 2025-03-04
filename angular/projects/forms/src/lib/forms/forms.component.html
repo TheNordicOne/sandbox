@@ -3,12 +3,16 @@
   <form [formGroup]="form">
     <fieldset>
       <legend>Reusable Form Parts</legend>
-      <sbf-reusable-form-parts />
+      <sbf-reusable-form-parts/>
     </fieldset>
     <fieldset>
+      @if (somethingIsLoading()) {
+        <span style="color: red;">Stand by. Something is still loading</span>
+      }
       <legend>Reusable Form Part with loading state</legend>
-      <sbf-reusable-form-part-with-loading-state filter="john" label="Johns" [delayInSeconds]="5" />
-      <sbf-reusable-form-part-with-loading-state filter="henry" label="Henrys" />
+      <sbf-reusable-form-part-with-loading-state key="john" filter="john" label="Johns" [delayInSeconds]="5"/>
+      <sbf-reusable-form-part-with-loading-state key="henry" filter="henry" label="Henrys"/>
+      <sbf-reusable-form-part-with-loading-state key="alex" filter="alex" label="Alex" [delayInSeconds]="2"/>
     </fieldset>
   </form>
   <div>
@@ -16,5 +20,5 @@
   </div>
 </div>
 <div>
-  <sbf-dynamic-form [dynamicFormConfig]="exampleForm" />
+  <sbf-dynamic-form [dynamicFormConfig]="exampleForm"/>
 </div>

@@ -4,7 +4,7 @@
     @if (isLoading()) {
       <span>Loading...</span>
     } @else {
-      <select [id]="'user-picker' + label()" type="text" formControlName="user">
+      <select [id]="'user-picker' + label()" type="text" [formControlName]="key()">
         @for (user of users.value(); track user.id) {
           <option [value]="user.username">{{ user.username }} ({{ user.firstName }} {{ user.lastName }})</option>
         }
