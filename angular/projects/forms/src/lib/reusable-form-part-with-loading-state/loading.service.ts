@@ -4,12 +4,12 @@ import {computed, Injectable, signal, Signal} from '@angular/core';
 export class LoadingService {
   private registrations = signal<Map<string, Signal<boolean>>>(new Map());
 
-  private isLoadingInter = computed(() => {
+  private isLoadingInternal = computed(() => {
     const loadingSignals = [...this.registrations().values()];
     return computed(() => loadingSignals.some((signal) => signal()));
   });
 
-  isLoading = computed(() => this.isLoadingInter()());
+  isLoading = computed(() => this.isLoadingInternal()());
 
   registerLoadingState(loadingSignal: Signal<boolean>, key: string) {
     this.registrations.update((map) => {
