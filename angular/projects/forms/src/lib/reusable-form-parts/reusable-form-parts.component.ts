@@ -1,6 +1,11 @@
-import { Component, inject, OnDestroy, OnInit, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ControlContainer, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, OnDestroy, OnInit, input } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import {
+  ControlContainer,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms'
 
 @Component({
   selector: 'sbf-reusable-form-parts',
@@ -10,15 +15,15 @@ import { ControlContainer, FormControl, FormGroup, ReactiveFormsModule } from '@
   viewProviders: [
     {
       provide: ControlContainer,
-      useFactory: () => inject(ControlContainer, { skipSelf: true })
-    }
-  ]
+      useFactory: () => inject(ControlContainer, { skipSelf: true }),
+    },
+  ],
 })
 export class ReusableFormPartsComponent implements OnInit, OnDestroy {
-  readonly usernameControlKey = input('username');
-  readonly passwordControlKey = input('password');
+  private parentContainer = inject(ControlContainer)
 
-  constructor(private parentContainer: ControlContainer) {}
+  readonly usernameControlKey = input('username')
+  readonly passwordControlKey = input('password')
 
   get parentFormGroup() {
     return this.parentContainer.control as FormGroup
