@@ -1,11 +1,6 @@
-import { Component, inject, OnDestroy, OnInit, input } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import {
-  ControlContainer,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms'
+import {Component, inject, input, OnDestroy, OnInit} from '@angular/core'
+import {CommonModule} from '@angular/common'
+import {ControlContainer, FormControl, FormGroup, ReactiveFormsModule,} from '@angular/forms'
 
 @Component({
   selector: 'sbf-reusable-form-parts',
@@ -20,6 +15,9 @@ import {
   ],
 })
 export class ReusableFormPartsComponent implements OnInit, OnDestroy {
+  // WARNING: THIS COMPONENT DOES NOT HANDLE THE CASE WHERE THE KEYS CHANGE
+  // It should have an effect that removes the control from the form if the key changes
+
   private parentContainer = inject(ControlContainer)
 
   readonly usernameControlKey = input('username')
