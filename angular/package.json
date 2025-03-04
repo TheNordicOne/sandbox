@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --project=ng-sandbox",
     "build": "ng build",
     "build:shared": "ng build --project=shared",
     "build:infrastructure": "ng build --project=infrastructure",
