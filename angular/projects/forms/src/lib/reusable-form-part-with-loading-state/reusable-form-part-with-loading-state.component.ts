@@ -39,6 +39,10 @@ export class ReusableFormPartWithLoadingStateComponent implements OnInit, OnDest
     return this.parentContainer.control as FormGroup;
   }
 
+  onRefresh() {
+    this.users.reload();
+  }
+
   ngOnInit(): void {
     this.parentFormGroup.addControl(this.key(), new FormControl(''));
     this.loadingService.registerLoadingState(this.isLoading, this.key());
