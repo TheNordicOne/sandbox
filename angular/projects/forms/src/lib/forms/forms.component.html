@@ -5,16 +5,9 @@
       <legend>Reusable Form Parts</legend>
       <sbf-reusable-form-parts/>
     </fieldset>
-    <fieldset>
-      @if (somethingIsLoading()) {
-        <span style="color: red;">Stand by. Something is still loading</span>
-      }
-      <legend>Reusable Form Part with loading state</legend>
-      <sbf-reusable-form-part-with-loading-state key="john" filter="john" label="Johns" [delayInSeconds]="5"/>
-      <sbf-reusable-form-part-with-loading-state key="henry" filter="henry" label="Henrys"/>
-      <sbf-reusable-form-part-with-loading-state key="alex" filter="alex" label="Alex" [delayInSeconds]="2"/>
-    </fieldset>
   </form>
+  <sbf-form-with-loading-state formTitle="First Form with loading state" />
+  <sbf-form-with-loading-state formTitle="Second Form with loading state" [firstRequestDelay]="5"/>
   <div>
     <button (click)="logToConsole()">Log to console</button>
   </div>

@@ -1,0 +1,12 @@
+<h2>{{formTitle()}}</h2>
+<form [formGroup]="form">
+  <fieldset>
+    @if (somethingIsLoading()) {
+      <span style="color: red;">Stand by. Something is still loading</span>
+    }
+    <legend>Reusable Form Part with loading state</legend>
+    <sbf-reusable-form-part-with-loading-state key="john" filter="john" label="Johns" [delayInSeconds]="firstRequestDelay()"/>
+    <sbf-reusable-form-part-with-loading-state key="henry" filter="henry" label="Henrys"/>
+    <sbf-reusable-form-part-with-loading-state key="alex" filter="alex" label="Alex" [delayInSeconds]="secondRequestDelay()"/>
+  </fieldset>
+</form>
