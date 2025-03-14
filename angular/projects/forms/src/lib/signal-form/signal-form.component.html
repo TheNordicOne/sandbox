@@ -1,0 +1,32 @@
+<h2>Signal Forms</h2>
+<form class="form">
+  <label for="firstName">First Name</label> <input type="text" id="firstName" name="firstName" [(ngModel)]="firstName"
+                                                   required />
+
+  <label for="lastName">Last Name</label> <input type="text" id="lastName" name="lastName" [(ngModel)]="lastName"
+                                                 required />
+
+  <label for="email">Email</label> <input type="email" id="email" name="emailAddress" [(ngModel)]="email" required
+                                          email />
+
+  <div id="phoneNumbers">
+    <label>Phone Numbers</label> @for (phone of phoneNumbers(); track i; let i = $index) {
+    <div><input type="tel" name="phoneNumbers-{{ i }}" [(ngModel)]="phone" required />
+      <button type="button" (click)="removePhoneNumber(i)">Remove</button>
+    </div>
+  }
+    <button type="button" (click)="addPhoneNumber()">Add Phone Number</button>
+  </div>
+
+  <label for="street">Street</label> <input type="text" id="street" name="street" [(ngModel)]="street" required />
+
+  <label for="city">City</label> <input type="text" id="city" name="city" [(ngModel)]="city" required />
+
+  <label for="state">State</label> <input type="text" id="state" name="state" [(ngModel)]="state" required />
+
+  <label for="zip">ZIP Code</label> <input type="text" id="zip" name="zip" [(ngModel)]="zip" required />
+
+  <pre>
+    {{ formValue() | json }}
+  </pre>
+</form>
