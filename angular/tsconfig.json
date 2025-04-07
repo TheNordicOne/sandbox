@@ -16,6 +16,9 @@
       "accessibility": [
         "./dist/accessibility"
       ],
+      "components": [
+        "./dist/components"
+      ],
       "forms": [
         "./dist/forms"
       ],

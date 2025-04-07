@@ -1,5 +1,5 @@
-import { Route } from '@angular/router'
-import { DashboardComponent } from './dashboard/dashboard.component'
+import {Route} from '@angular/router';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 export const appRoutes: Route[] = [
   {
@@ -8,8 +8,11 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'accessibility',
-    loadChildren: () =>
-      import('accessibility').then((m) => m.accessibilityRoutes),
+    loadChildren: () => import('accessibility').then((m) => m.accessibilityRoutes),
+  },
+  {
+    path: 'components',
+    loadChildren: () => import('components').then((m) => m.componentsRoutes),
   },
   {
     path: 'home',
@@ -19,4 +22,4 @@ export const appRoutes: Route[] = [
     path: '**',
     redirectTo: 'home',
   },
-]
+];

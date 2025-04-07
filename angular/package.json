@@ -9,9 +9,10 @@
     "build:infrastructure": "ng build --project=infrastructure",
     "build:accessibility": "ng build --project=accessibility",
     "build:forms": "ng build --project=forms",
+    "build:components": "ng build --project=components",
     "build:sandbox": "ng build --project=sandbox",
     "build:tic-tac-toe": "ng build --project=tic-tac-toe",
-    "build:libs": "npm run build:shared && npm run build:infrastructure && npm run build:accessibility && npm run build:forms",
+    "build:libs": "npm run build:shared && npm run build:infrastructure && npm run build:components && npm run build:accessibility && npm run build:forms",
     "watch": "ng build --watch --configuration development",
     "test": "jest"
   },
