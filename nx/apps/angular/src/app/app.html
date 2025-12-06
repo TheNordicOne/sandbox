@@ -1,3 +1,28 @@
 <h1>NX Angular</h1>
-<lib-button label="A button" (press)="onPress()"/>
+<lib-button label="A button" (press)="onPress()" />
+<div>
+  <h2>Nordic Users</h2>
+  <ul>
+    @for (user of nordicUsers; track user.id) {
+    <li>{{user.name}}</li>
+    }
+  </ul>
+</div>
+<div>
+  <h2>One Users</h2>
+  <ul>
+    @for (user of oneUsers; track user.id) {
+      <li>{{user.name}}</li>
+    }
+  </ul>
+</div>
+
+<div>
+  <h2>Cities</h2>
+  <ul>
+    @for (city of cities; track city.id) {
+      <li>{{city.name}}</li>
+    }
+  </ul>
+</div>
 <router-outlet></router-outlet>
