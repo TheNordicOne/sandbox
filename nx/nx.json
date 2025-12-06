@@ -29,6 +29,11 @@
     "@nx/vitest:test": {
       "cache": true,
       "inputs": ["default", "^production"]
+    },
+    "@nx/angular:ng-packagr-lite": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "plugins": [
@@ -50,6 +55,13 @@
       "e2eTestRunner": "playwright",
       "linter": "eslint",
       "style": "scss",
+      "unitTestRunner": "vitest"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
       "unitTestRunner": "vitest"
     }
   }
