@@ -5,6 +5,16 @@
   "prefix": "app",
   "sourceRoot": "apps/angular/src",
   "tags": [],
+  "generators": {
+    "@schematics/angular:component": {
+      "changeDetection": "OnPush",
+      "style": "scss"
+    },
+    "@nx/angular:component": {
+      "changeDetection": "OnPush",
+      "style": "scss"
+    }
+  },
   "targets": {
     "build": {
       "executor": "@angular/build:application",
