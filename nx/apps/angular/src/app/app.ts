@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Button } from '@nx/components';
 import { CITIES } from '@nx/data';
+import { USERS as TheUsers } from '@nx/data/the';
 import { USERS as NordicUsers } from '@nx/data/nordic';
 import { USERS as OneUsers } from '@nx/data/one';
 
@@ -15,6 +16,7 @@ import { USERS as OneUsers } from '@nx/data/one';
 export class App {
   protected title = 'angular';
 
+  theUsers = TheUsers;
   nordicUsers = NordicUsers;
   oneUsers = OneUsers;
   cities = CITIES;

@@ -1,0 +1,42 @@
+export const USERS = [
+  {
+    id: 1,
+    name: 'Oliver Williams',
+    email: 'oliver.williams@example.com',
+    role: 'Tech Lead',
+    department: 'Engineering',
+    active: true,
+  },
+  {
+    id: 2,
+    name: 'Emma Johnson',
+    email: 'emma.johnson@example.com',
+    role: 'Data Analyst',
+    department: 'Analytics',
+    active: true,
+  },
+  {
+    id: 3,
+    name: 'Liam Brown',
+    email: 'liam.brown@example.com',
+    role: 'QA Engineer',
+    department: 'Quality Assurance',
+    active: false,
+  },
+  {
+    id: 4,
+    name: 'Ava Davis',
+    email: 'ava.davis@example.com',
+    role: 'Business Analyst',
+    department: 'Business',
+    active: true,
+  },
+  {
+    id: 5,
+    name: 'Noah Wilson',
+    email: 'noah.wilson@example.com',
+    role: 'Solutions Architect',
+    department: 'Architecture',
+    active: true,
+  },
+]

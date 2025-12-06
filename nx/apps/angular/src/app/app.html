@@ -1,6 +1,14 @@
 <h1>NX Angular</h1>
 <lib-button label="A button" (press)="onPress()" />
 <div>
+  <h2>The Users</h2>
+  <ul>
+    @for (user of theUsers; track user.id) {
+    <li>{{user.name}}</li>
+    }
+  </ul>
+</div>
+<div>
   <h2>Nordic Users</h2>
   <ul>
     @for (user of nordicUsers; track user.id) {
