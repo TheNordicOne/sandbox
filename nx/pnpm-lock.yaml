@@ -99,6 +99,9 @@ importers:
       '@schematics/angular':
         specifier: ~20.3.0
         version: 20.3.13(chokidar@4.0.3)
+      '@storybook/addon-a11y':
+        specifier: ^10.1.4
+        version: 10.1.4(storybook@10.1.4(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))
       '@storybook/angular':
         specifier: 10.1.4
         version: 10.1.4(b86386f81ba7cb69194e40351abf8484)
@@ -2831,6 +2834,11 @@ packages:
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
 
+  '@storybook/addon-a11y@10.1.4':
+    resolution: {integrity: sha512-go7SshAyu+pnK7Prq3UnCBCB7DxAQkPMnebsv3fnboeTZHnDXQqfmHdZ15o+pH0JsCedC05RYsdbjd2rMHMvFQ==}
+    peerDependencies:
+      storybook: ^10.1.4
+
   '@storybook/angular@10.1.4':
     resolution: {integrity: sha512-qCJvRT2kBywL0SqlfevLXNH2uUqssHMSneBPGHVz32tniBm6mlrZd+sizTes0gUfn0SXZjwVVMdukWpLDmtVsw==}
     peerDependencies:
@@ -3504,6 +3512,10 @@ packages:
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
+
+  axe-core@4.11.0:
+    resolution: {integrity: sha512-ilYanEU8vxxBexpJd8cWM4ElSQq4QctCLKih0TSfjIfCQTeyH/6zVrmIJfLPrKTKJRbiG+cfnZbQIjAlJmF1jQ==}
+    engines: {node: '>=4'}
 
   axios@1.13.2:
     resolution: {integrity: sha512-VPk9ebNqPcy5lRGuSlKx752IlDatOjT9paPlm8A7yOuW2Fbvp4X3JznJtT4f0GzGLLiWE9W8onz51SqLYwzGaA==}
@@ -11397,6 +11409,12 @@ snapshots:
 
   '@standard-schema/spec@1.0.0': {}
 
+  '@storybook/addon-a11y@10.1.4(storybook@10.1.4(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))':
+    dependencies:
+      '@storybook/global': 5.0.0
+      axe-core: 4.11.0
+      storybook: 10.1.4(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+
   '@storybook/angular@10.1.4(b86386f81ba7cb69194e40351abf8484)':
     dependencies:
       '@angular-devkit/architect': 0.2100.2(chokidar@4.0.3)
@@ -12207,6 +12225,8 @@ snapshots:
       picocolors: 1.1.1
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
+
+  axe-core@4.11.0: {}
 
   axios@1.13.2:
     dependencies:
