@@ -1,0 +1,28 @@
+.button {
+  --background-color: initial;
+  --text-color: initial;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: none;
+  padding: 1rem;
+}
+
+[data-severity="primary"] {
+  --background-color: #2626e0;
+  --text-color: white;
+}
+
+[data-severity="secondary"] {
+  --background-color: oklch(0.758 0.147 80.79);
+  --text-color: white;
+}
+
+[data-severity="danger"] {
+  --background-color: oklch(0.601 0.204 31.044);
+  --text-color: white;
+}
+
+[data-severity="info"] {
+  --background-color: oklch(0.605 0.164 252.642);
+  --text-color: white;
+}

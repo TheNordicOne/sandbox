@@ -9,4 +9,8 @@ import { Component, input, output } from '@angular/core';
 export class Button {
   label = input.required<string>();
   press = output();
+
+  severity = input<Severity>('primary');
 }
+
+export type Severity = 'primary' | 'secondary' | 'danger' | 'info' ;

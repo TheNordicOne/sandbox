@@ -5,6 +5,17 @@ import { expect } from 'storybook/test';
 const meta: Meta<Button> = {
   component: Button,
   title: 'Button',
+  argTypes: {
+    press: { action: 'press' },
+    severity: {
+      control: 'select',
+      options: ['primary', 'secondary', 'danger', 'info'],
+    },
+  },
+  args: {
+    label: 'Moin',
+    severity: 'primary',
+  },
 };
 export default meta;
 
@@ -16,10 +27,28 @@ export const Primary: Story = {
   },
 };
 
-export const Heading: Story = {
+export const Secondary: Story = {
   args: {
-    label: 'Moin',
+    label: 'Teste mich',
+    severity: 'secondary',
   },
+};
+
+export const Danger: Story = {
+  args: {
+    label: 'Teste mich',
+    severity: 'danger',
+  },
+};
+
+export const Info: Story = {
+  args: {
+    label: 'Teste mich',
+    severity: 'info',
+  },
+};
+
+export const Heading: Story = {
   play: async ({ canvas }) => {
     await expect(canvas.getByText(/Moin/gi)).toBeTruthy();
   },
