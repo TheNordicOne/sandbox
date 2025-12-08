@@ -17,10 +17,10 @@
     "paths": {
       "@nx/components": ["libs/components/src/index.ts"],
       "@nx/data": ["libs/data/src/index.ts"],
+      "@nx/data/the": ["libs/data/the/src/index.ts"],
       "@nx/data/nordic": ["libs/data/nordic/src/index.ts"],
       "@nx/data/one": ["libs/data/one/src/index.ts"],
-      "@nx/data/the": ["libs/data/src/lib/the/src/index.ts"],
-      "@nx/business": ["libs/business/src/index.ts"]
+      "@nx/business": ["libs/business/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

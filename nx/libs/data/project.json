@@ -4,10 +4,17 @@
   "sourceRoot": "libs/data/src",
   "prefix": "lib",
   "projectType": "library",
+  "release": {
+    "version": {
+      "manifestRootsToUpdate": ["dist/{projectRoot}"],
+      "currentVersionResolver": "git-tag",
+      "fallbackCurrentVersionResolver": "disk"
+    }
+  },
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
+      "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
         "project": "libs/data/ng-package.json",
@@ -20,6 +27,11 @@
         "development": {}
       },
       "defaultConfiguration": "production"
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
     },
     "test": {
       "executor": "@nx/vitest:test",
