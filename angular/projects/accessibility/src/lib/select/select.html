@@ -1,0 +1,128 @@
+<div ngCombobox readonly>
+  <div #origin class="sba-select">
+    @let isMulti = multi();
+    @let singleValueTemplate = selectedValueTemplate();
+    @let multiValueTemplate = selectedValuesTemplate();
+    @let template = isMulti ? multiValueTemplate : singleValueTemplate;
+
+    <div class="sba-select__label">
+      <ng-container
+        *ngTemplateOutlet="
+          template ? template : defaultSelectedValueTemplate;
+          context: { $implicit: selectedValue() }
+        "
+      />
+    </div>
+
+    <input
+      aria-label="Label dropdown"
+      [placeholder]="placeholder()"
+      [disabled]="disabled()"
+      ngComboboxInput
+    />
+    <span class="sba-select__arrow material-symbols-outlined" translate="no">
+      arrow_drop_down
+    </span>
+  </div>
+
+  <ng-template ngComboboxPopupContainer>
+    <ng-template
+      [cdkConnectedOverlay]="{ origin, usePopover: 'inline', matchWidth: true }"
+      [cdkConnectedOverlayOpen]="true"
+    >
+      <div class="sba-select__popup">
+        @if (searchable()) {
+          <div class="sba-select__search">
+            <span class="material-symbols-outlined" translate="no">search</span>
+            <input
+              #searchInput
+              type="text"
+              [placeholder]="searchPlaceholder()"
+              [(ngModel)]="searchTerm"
+              (keydown)="onSearchKeydown($event)"
+              (click)="$event.stopPropagation()"
+            />
+          </div>
+        }
+
+        @if (virtual()) {
+          <cdk-virtual-scroll-viewport
+            ngListbox
+            [multi]="multi()"
+            [itemSize]="itemSize()"
+            (valuesChange)="onValuesChange($event)"
+            [wrap]="false"
+            class="sba-select__viewport"
+            (scrolledIndexChange)="onScrolledIndexChange()"
+            appendOnly
+          >
+            <div
+              *cdkVirtualFor="
+                let label of filteredLabels();
+                trackBy: trackByKey
+              "
+              ngOption
+              [value]="label"
+              [label]="getLabel(label)"
+            >
+              <ng-container
+                *ngTemplateOutlet="optionContent; context: { $implicit: label }"
+              ></ng-container>
+            </div>
+
+            @if (isLoading()) {
+              <div class="sba-select__loading">
+                Loading...
+              </div>
+            }
+          </cdk-virtual-scroll-viewport>
+        } @else {
+          <div
+            ngListbox
+            [multi]="multi()"
+            [(values)]="values"
+            class="sba-select__list"
+          >
+            @for (label of filteredLabels(); track label[dataKey()]) {
+              <div ngOption [value]="label" [label]="getLabel(label)">
+                <ng-container
+                  *ngTemplateOutlet="
+                    optionContent;
+                    context: { $implicit: label }
+                  "
+                ></ng-container>
+              </div>
+            }
+
+            @if (filteredLabels().length === 0) {
+              <div class="sba-select__empty">No options found.</div>
+            }
+          </div>
+        }
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
+
+<ng-template #optionContent let-label>
+  @let template = optionTemplate();
+  <ng-container
+    *ngTemplateOutlet="
+      template ? template : defaultOptionTemplate;
+      context: { $implicit: label, selected: isSelected(label) }
+    "
+  />
+</ng-template>
+
+<ng-template #defaultSelectedValueTemplate>
+  <span class="sba-select__label-text">{{ displayValue() }}</span>
+</ng-template>
+
+<ng-template #defaultOptionTemplate let-label>
+  <span class="sba-select__option-text">{{ label[labelKey()] }}</span>
+  <span
+    class="sba-select__option-check material-symbols-outlined"
+    translate="no"
+    >check</span
+  >
+</ng-template>
