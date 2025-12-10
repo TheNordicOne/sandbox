@@ -1,0 +1,11 @@
+<svg
+  aria-hidden="true"
+  focusable="false"
+  [attr.height]="size()"
+  [attr.width]="size()"
+>
+  <use [attr.xlink:href]="svgSprite()" />
+</svg>
+@if (label()) {
+  <span class="sr-only">{{ label() }}</span>
+}
