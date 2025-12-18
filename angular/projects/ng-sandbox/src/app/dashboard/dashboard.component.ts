@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common'
-import { Component, inject } from '@angular/core'
-import { RouterLink } from '@angular/router'
-import { ENVIRONMENT_SERVICE } from '../../environments/environment.token'
+import {CommonModule} from '@angular/common'
+import {Component, inject} from '@angular/core'
+import {RouterLink} from '@angular/router'
+import {ENVIRONMENT_SERVICE} from '../../environments/environment.token'
 
 @Component({
   selector: 'asb-dashboard',
@@ -10,11 +10,11 @@ import { ENVIRONMENT_SERVICE } from '../../environments/environment.token'
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  private environmentService = inject(ENVIRONMENT_SERVICE)
+  private environmentService = inject(ENVIRONMENT_SERVICE);
 
-  demoBool = this.environmentService.get('demoBool')
-  demoString = this.environmentService.get('demoString')
-  demoNumber = this.environmentService.get('demoNumber')
-  demoArray = this.environmentService.get('demoArray')
-  demoObject = this.environmentService.get('demoObject')
+  demoBool = this.environmentService.get('demoBool');
+  demoString = this.environmentService.get('demoString');
+  demoNumber = this.environmentService.get('demoNumber');
+  demoArray = this.environmentService.get('demoArray');
+  demoObject = this.environmentService.get('demoObject');
 }
