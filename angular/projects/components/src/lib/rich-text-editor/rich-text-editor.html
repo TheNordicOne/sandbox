@@ -1,0 +1,30 @@
+@if (!readonly()) {
+  <sbc-rich-text-editor-toolbar
+    [editor]="editor"
+    [toolbarConfig]="toolbarConfig()"
+    (popoverToolClicked)="onPopoverToolClicked($event)"
+  />
+}
+<tiptap-editor
+  [disabled]="disabled() || readonly()"
+  [editor]="editor"
+  [ngModel]="content()"
+  (ngModelChange)="onValuesChange($event)"
+  [attr.data-readonly]="readonly()"
+/>
+
+@if (!readonly()) {
+  <sbc-link-popover
+    #linkPopover
+    [editor]="editor"
+    (linkSaved)="onLinkSaved($event)"
+    (linkRemoved)="onLinkRemoved()"
+  />
+
+  <sbc-cell-color-popover
+    #cellColorPopover
+    [editor]="editor"
+    (colorApplied)="onCellColorApplied($event)"
+    (colorRemoved)="onCellColorRemoved()"
+  />
+}

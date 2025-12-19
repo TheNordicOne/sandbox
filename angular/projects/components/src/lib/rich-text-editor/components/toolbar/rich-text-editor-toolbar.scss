@@ -1,0 +1,84 @@
+.rte-toolbar {
+  --sbc-rte-toolbar-spacing: 0.5em;
+  --sbc-rte-toolbar-button-size: 2rem;
+  --sbc-rte-toolbar-button-radius: 2px;
+  --sbc-rte-toolbar-anchor-name: --sbc-rte-toolbar-action;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sbc-rte-toolbar-spacing);
+  padding: 0.25em;
+  background: var(--sbc-rte-color-surface-b);
+  border: 1px solid var(--sbc-rte-color-input-border);
+  border-bottom: 1px solid var(--sbc-rte-color-surface-border);
+
+  .toolbar-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--sbc-rte-toolbar-button-size);
+    height: var(--sbc-rte-toolbar-button-size);
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: var(--sbc-rte-toolbar-button-radius);
+    background: transparent;
+    color: var(--sbc-rte-color-text);
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.1s ease, border-color 0.1s ease;
+    anchor-name: var(--sbc-rte-toolbar-anchor-name);
+
+    &.spacer {
+      margin-left: var(--sbc-rte-toolbar-spacing);
+
+      &::before {
+        content: "";
+        position: absolute;
+        right: calc(var(--sbc-rte-toolbar-button-size) + var(--sbc-rte-toolbar-spacing));
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 1rem;
+
+        background: var(--sbc-rte-color-surface-border);
+      }
+    }
+
+    .toolbar-button__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
+      font-style: normal;
+      font-size: 1rem;
+      line-height: 1;
+      user-select: none;
+    }
+
+  }
+
+  .toolbar-button:hover {
+    background: var(--sbc-rte-color-surface-hover);
+    color: var(--sbc-rte-color-surface-700);
+  }
+
+  .toolbar-button:active {
+    background: var(--sbc-rte-color-surface-d);
+    color: var(--sbc-rte-color-surface-700);
+  }
+
+  .toolbar-button.active {
+    background: var(--sbc-rte-color-surface-d);
+    color: var(--sbc-rte-color-primary);
+    border-color: var(--sbc-rte-color-primary);
+  }
+
+  .toolbar-button:focus-visible {
+    outline: 1px solid var(--sbc-rte-color-surface-600);
+    outline-offset: 2px;
+  }
+}

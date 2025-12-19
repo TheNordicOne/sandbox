@@ -1,0 +1,25 @@
+<div class="rte-toolbar">
+  @for (
+    group of visibleToolbarGroups();
+    track group.id;
+    let firstGroup = $first
+  ) {
+    @for (tool of group.tools; track tool.id; let firstInGroup = $first) {
+      <button
+        type="button"
+        class="toolbar-button"
+        [class.spacer]="firstInGroup && !firstGroup"
+        [class.active]="toolState()[tool.id]"
+        [class.link-button]="tool.id === 'link'"
+        (click)="executeTool(tool)"
+        [style]="{
+          'anchor-name': tool.anchorName,
+        }"
+        [title]="tool.label"
+      >
+        <!-- Generic Icon Placeholder -->
+        <i class="toolbar-button__icon" aria-hidden="true">◻</i>
+      </button>
+    }
+  }
+</div>

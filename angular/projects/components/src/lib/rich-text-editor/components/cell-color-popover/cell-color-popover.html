@@ -1,0 +1,74 @@
+<sbc-popover (closed)="close()" anchor="--cell-color-action">
+  <div class="cell-color-popover">
+    <div class="popover-header">
+      <h3 class="popover-title">Cell Background Color</h3>
+      @if (selectedCellsCount() > 1) {
+        <span class="selection-info">{{
+            selectedCellsCount()
+        }} selected</span>
+      }
+    </div>
+
+    <div class="current-color-preview">
+      <span class="section-label">Current Color</span>
+      <div class="preview-box" [style.background-color]="backgroundColor()">
+        <span class="preview-text">{{ backgroundColor() }}</span>
+      </div>
+    </div>
+
+    <div class="color-picker-section">
+      <label for="color-picker">Choose Color</label>
+      <div class="color-input-wrapper">
+        <input
+          id="color-picker"
+          type="color"
+          [(ngModel)]="backgroundColor"
+          class="color-input"
+          (keydown)="onKeyDown($event)"
+        />
+        <input
+          sbcInput
+          type="text"
+          [(ngModel)]="backgroundColor"
+          placeholder="#fff"
+          class="color-text-input"
+          (keydown)="onKeyDown($event)"
+        />
+      </div>
+    </div>
+
+    <div class="predefined-colors">
+      <span class="section-label">Predefined Colors</span>
+      <div class="color-grid">
+        @for (color of predefinedColors; track color) {
+          <button
+            type="button"
+            class="color-swatch"
+            [class.selected]="backgroundColor() === color"
+            [style.background-color]="color"
+            [title]="color"
+            (click)="selectPredefinedColor(color)"
+          >
+            @if (backgroundColor() === color) {
+              <span class="checkmark">✓</span>
+            }
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="popover-actions">
+      <button sbcButton type="button" severity="primary" (click)="apply()">
+        Apply
+      </button>
+
+      <button sbcButton type="button" severity="secondary" (click)="remove()">
+        Remove
+      </button>
+
+      <button sbcButton type="button" severity="secondary" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</sbc-popover>

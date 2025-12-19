@@ -1,0 +1,172 @@
+:host {
+  /* Defaults so this popover still looks correct when rendered in overlays */
+  --sbc-rte-color-primary: oklch(0.56 0.16 251.3);
+  --sbc-rte-color-primary-hover: oklch(0.52 0.16 251.3);
+  --sbc-rte-color-text: oklch(0.2 0.02 250);
+
+  --sbc-rte-color-surface-0: oklch(1 0 0);
+  --sbc-rte-color-surface-50: oklch(0.98 0.005 250);
+  --sbc-rte-color-surface-400: oklch(0.78 0.01 250);
+  --sbc-rte-color-surface-500: oklch(0.68 0.012 250);
+  --sbc-rte-color-surface-border: oklch(0.88 0.01 250);
+
+  --sbc-rte-color-popover-border: oklch(0.88 0.01 250);
+  --sbc-rte-shadow-popover: 0 10px 30px oklch(0 0 0 / 0.18);
+}
+
+.cell-color-popover {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 300px;
+  padding: 1rem;
+}
+
+.popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.popover-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.selection-info {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--sbc-rte-color-primary);
+  background-color: var(--sbc-rte-color-surface-50);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.current-color-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  .section-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .preview-box {
+    height: 48px;
+    border: 2px solid var(--sbc-rte-color-surface-border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--sbc-rte-shadow-popover);
+
+    .preview-text {
+      font-family: monospace;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      background-color: var(--sbc-rte-color-surface-0);
+      border-radius: 3px;
+      text-shadow: 0 1px 2px oklch(0 0 0 / 0.1);
+    }
+  }
+}
+
+.color-picker-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}
+
+.color-input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.color-input {
+  width: 60px;
+  height: 40px;
+  border: 1px solid var(--sbc-rte-color-popover-border);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px;
+
+  &:hover {
+    border-color: var(--sbc-rte-color-surface-400);
+  }
+}
+
+.color-text-input {
+  flex: 1;
+}
+
+.predefined-colors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .section-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.color-swatch {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--sbc-rte-color-popover-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  &:hover {
+    border-color: var(--sbc-rte-color-surface-500);
+    transform: scale(1.1);
+  }
+
+  &.selected {
+    border-color: var(--sbc-rte-color-primary);
+    border-width: 3px;
+    box-shadow: 0 0 0 2px var(--sbc-rte-color-primary-hover);
+  }
+
+  .checkmark {
+    color: var(--sbc-rte-color-text);
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 0 0 2px var(--sbc-rte-color-surface-0);
+  }
+}
+
+.popover-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+
+  button {
+    flex-shrink: 0;
+  }
+}

@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {RichTextEditor} from './rich-text-editor/rich-text-editor';
 
 @Component({
-  selector: 'lib-components',
-  imports: [],
+  selector: 'sbc-components',
+  imports: [
+    RichTextEditor
+  ],
   template: `
-    <p>
-      components works!
-    </p>
+    <sbc-rich-text-editor/>
   `,
   styles: ``
 })

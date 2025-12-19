@@ -1,0 +1,23 @@
+.sbc-popover {
+  border: 1px solid var(--popover-border-color);
+  border-radius: var(--border-radius);
+  background: var(--surface-0);
+  box-shadow: var(--popover-box-shadow);
+  padding: 1rem;
+
+  position: absolute;
+  position-anchor: var(--anchor);
+  position-try-fallbacks: --bottom;
+
+  margin: 0;
+  inset: auto;
+  top: anchor(top);
+  left: anchor(right);
+
+}
+
+@position-try --bottom {
+  inset: auto;
+  top: anchor(top);
+  right: anchor(left);
+}

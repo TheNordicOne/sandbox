@@ -1,0 +1,27 @@
+.link-popover {
+  display: grid;
+  gap: 1rem;
+
+  label {
+    display: block;
+    font-size: 1em;
+    font-weight: 500;
+  }
+}
+
+.input-group {
+  display: grid;
+  gap: 0.25em;
+}
+
+.popover-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.popover-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}

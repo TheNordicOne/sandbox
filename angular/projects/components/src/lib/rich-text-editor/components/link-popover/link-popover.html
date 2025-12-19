@@ -1,0 +1,56 @@
+<sbc-popover (closed)="close()" anchor="--link-action">
+  <div class="link-popover">
+    <h3 class="popover-title">Edit Link</h3>
+
+    <div class="input-group">
+      <label for="link-url">URL</label>
+      <input
+        sbcInput
+        id="link-url"
+        type="text"
+        placeholder="https://angular.dev"
+        [(ngModel)]="url"
+        (keydown)="onKeyDown($event)"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="link-text">Link Text</label>
+      <input
+        sbcInput
+        id="link-text"
+        type="text"
+        [(ngModel)]="text"
+        (keydown)="onKeyDown($event)"
+      />
+    </div>
+
+    <div class="popover-actions">
+      <button
+        sbcButton
+        type="button"
+        severity="primary"
+        (click)="save()"
+        [disabled]="!url()"
+      >
+        Save
+      </button>
+
+      @if (url()) {
+        <button sbcButton type="button" severity="danger" (click)="remove()">
+          Remove
+        </button>
+      }
+
+      <button
+        sbcButton
+        type="button"
+        severity="danger"
+        variant="outline"
+        (click)="cancel()"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</sbc-popover>

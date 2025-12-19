@@ -1,0 +1,12 @@
+<div
+  #popover
+  popover
+  class="sbc-popover"
+  role="menu"
+  [style]="{
+    '--anchor': anchor(),
+  }"
+  (toggle)="onToggle($event)"
+>
+  <ng-content></ng-content>
+</div>
