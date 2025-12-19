@@ -1,0 +1,84 @@
+:host {
+  display: grid;
+  justify-items: center;
+
+  --sbc-popup-menu-background: oklch(1 0 0);
+  --sbc-popup-menu-shadow: 0 10px 30px oklch(0 0 0 / 0.18);
+  --sbc-popup-menu-radius: 2px;
+
+  --sbc-popup-menu-text-color: oklch(0.2 0.02 250);
+
+  --sbc-popup-menu-item-bg-active: oklch(0.98 0.005 250);
+  --sbc-popup-menu-item-bg-hover: oklch(0.96 0.007 250);
+
+  --sbc-popup-menu-focus-outline-color: oklch(0.56 0.16 251.3);
+
+  --sbc-popup-menu-separator-color: oklch(0.92 0.01 250);
+}
+
+[ngMenu] {
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: var(--sbc-popup-menu-radius);
+  background-color: var(--sbc-popup-menu-background);
+  box-shadow: var(--sbc-popup-menu-shadow);
+  display: grid;
+  gap: 0.125rem;
+  backdrop-filter: blur(40px);
+}
+
+[ngMenu][data-visible='false'] {
+  display: none;
+}
+
+[ngMenuItem] {
+  outline: none;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto 1fr;
+  cursor: pointer;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border-radius: var(--sbc-popup-menu-radius);
+  color: var(--sbc-popup-menu-text-color);
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[ngMenuTrigger]:hover,
+[ngMenuItem][data-active='true'] {
+  background-color: var(--sbc-popup-menu-item-bg-active);
+}
+
+[ngMenuItem]:hover {
+  background-color: var(--sbc-popup-menu-item-bg-hover);
+}
+
+[ngMenuItem]:focus,
+[ngMenuTrigger]:focus {
+  outline: 2px solid var(--sbc-popup-menu-focus-outline-color);
+  outline-offset: -2px;
+}
+
+[ngMenuItem] .action {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: var(--sbc-popup-menu-text-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+[ngMenuItem]:not([aria-expanded='true']) .arrow {
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+
+[ngMenu] .separator {
+  border: none;
+  border-top: 1px solid var(--sbc-popup-menu-separator-color);
+  margin: 0.25rem 0;
+  height: 0;
+}
